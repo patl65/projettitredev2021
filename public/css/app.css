@@ -1,0 +1,143 @@
+@import url(https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,500&display=swap);
+/* * {
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  } */
+
+/* Layout */
+
+body {
+    width: 100%;
+    background: top / cover rgba(216, 216, 208, 0.8) url('/images/layout/interior-2685517_1280.jpg') no-repeat;
+    background-size: 100% auto;
+    /* background: #d8d8d0; */
+    display: flex;
+    flex-direction: column;
+    min-height:  100vh;
+}
+
+main{
+    flex-grow: 1;
+}
+
+.phoneLatu {
+    background-color: #aebac6;
+    color: white;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    }
+
+.navbar {
+    background-color: rgba(148, 156, 155, 0.6);
+    height: 89px;
+}
+
+.nav-link {
+    color: white !important;
+    /* font-weight: bold; */
+    font-size: 20px;
+}
+
+.collapse {
+    background-color: rgba(110, 114, 113);
+}
+
+footer {
+    background-color: rgba(216, 216, 208);
+    /* position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0; */
+    width: 100%;
+    height: 50px;
+    vertical-align: middle;
+    /* pour centrer verticallement */
+    line-height: 50px;
+    /* pour centrer verticallement */
+}
+
+
+/* Pages */
+h1 {
+    font-family: 'Raleway', sans-serif;
+    color: #1f0bf4;
+    font-size: 60px;
+    text-align: center;
+    margin-top: 18px;
+    margin-bottom: 20px;
+}
+
+/* home page */
+
+.card-title {
+    font-family: 'Raleway', sans-serif;
+    color: #1f0bf4;
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+    padding-bottom: 2px;
+}
+
+.card-body {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.card-shadow {
+    box-shadow: 8px 8px 2px 1px rgba(3, 3, 3, 0.7);
+}
+
+.card-entreprise {
+    background-color: #c2c6c7;
+    min-height: 80px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.img-metier {
+    max-height: 170px !important;
+}
+
+/* conseils de pro et actualités */
+
+.card-blog {
+    /* background-color: grey ; */
+    /* border-radius: 30px; */
+    padding: 0 !important;
+}
+
+.card-blog-body {
+    padding-right: 16px !important;
+    padding-left: 16px !important;
+}
+
+.card-blog-video {
+    width: 320px;
+    height: 240px;
+}
+
+.card-blog-img {
+    max-width: 300px !important;
+    max-height: 400px !important;
+    width: auto;
+    height: auto;
+}
+
+.iframe {
+    /* display:none */
+    /* pour ne pas charger les vidéos */
+}
+
+.form-control {
+    padding-left: 0;
+}
+
+/* pages métier */
+
+.text-metier {}
+
