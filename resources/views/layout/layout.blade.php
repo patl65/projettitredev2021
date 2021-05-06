@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Latu</title>
+    <title>PatriciaL</title>
 
     <!-- Fonts -->
     <link href="" rel="stylesheet">
@@ -116,10 +116,12 @@
 
 
 
-    <footer class="footer text-center my-3">
-        <p><a href="{{ route('mentionsLegales') }}">Mentions légales</a>
-            - <b>Ce site n'utilise pas les cookies</b></p>
-            
+    <footer class="footer align-items-center text-center my-3 pt-3 text-light">
+{{-- <div class="h-100 align-items-center"> --}}
+    <p style="color:rgb(241, 208, 20)"><i>@PatriciaLayerle - Titre concepteur développeur d’applications</i></p>
+    <p><a href="{{ route('mentionsLegales') }}">Mentions légales</a>
+        - <b>Ce site n'utilise pas les cookies</b></p>
+{{-- </div>             --}}
     </footer>
 </body>
 

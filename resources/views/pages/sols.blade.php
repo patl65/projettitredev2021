@@ -11,7 +11,7 @@
                     width="auto" height="auto">
             </div>
             <p class="text-metier mt-2">
-                Nous faisons les ragréages et la pose de pvc ,lino ,moquette et parquet.
+                Nous faisons les ragréages et la pose de pvc, lino, moquette et parquet.
             </p>
             <p class="text-metier">
                 Tous type de pose soit tendue, collée ou clipsée.

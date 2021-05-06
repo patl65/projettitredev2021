@@ -11,7 +11,7 @@
                     alt="Latu isolation ITE" width="auto" height="auto">
             </div>
             <p class="text-metier mt-2">
-                Nous réalisons une isolation qui consiste à entourer , par l’extérieur, votre maison d’une couverture de
+                Nous réalisons une isolation qui consiste à entourer, par l’extérieur, votre maison d’une couverture de
                 matériaux isolants.
             </p>
             <p class="text-metier">

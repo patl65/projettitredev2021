@@ -11,10 +11,10 @@
                     alt="Latu peinture" width="auto" height="auto">
             </div>
             <p class="text-metier mt-2">
-                Nous intervenons dans les bâtiments industriels ,les logements collectifs ainsi que les particuliers.
+                Nous intervenons dans les bâtiments industriels, les logements collectifs ainsi que les particuliers.
             </p>
             <p class="text-metier">
-                Nous déposons un film de peinture mat ,velouté ou satiné sur tous supports après une préparation réalisée
+                Nous déposons un film de peinture mat, velouté ou satiné sur tous supports après une préparation réalisée
                 par nos soins.
             </p>
             <p class="text-metier">
