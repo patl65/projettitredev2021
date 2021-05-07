@@ -64,7 +64,7 @@ Route::group(['prefix' => 'admin/category', 'middleware' => 'auth'], function ()
     Route::post('{category:slug}', [CategoryController::class, 'update'])->name('category.update');
 });
 
-//pour le blog : pour les posts
+//pour le blog : pour les posts de l'admin
 Route::group(['prefix' => 'admin/post', 'middleware' => 'auth'], function () {
     Route::get('', [PostController::class, 'index'])->name('post.index');
     Route::get('search', [PostController::class, 'search'])->name('post.index.search');
@@ -86,13 +86,18 @@ Route::group(['prefix' => 'admin/post', 'middleware' => 'auth'], function () {
 
 
 //pour le blog : pour les pages visibles
-Route::group(['prefix' => 'conseil-pro-actualites'], function () {
+Route::group(['prefix' => 'blog'], function () {
     Route::get('', [SitePostController::class, 'indexBlog'])->name('blog.index');
     Route::get('search', [SitePostController::class, 'searchBlog'])->name('blog.index.search');
     //pour la barre de recherche
     Route::get('post/{post:slug}', [SitePostController::class, 'showPostBlog'])->name('blog.post.show');
     Route::get('{category:slug}', [SiteCategoryController::class, 'showBlogByCategory'])->name('blog.category.show');
+// TODO: voir notes
+
 });
+
+
+
 
 
 //pour la page contact avec l'envoit du mail

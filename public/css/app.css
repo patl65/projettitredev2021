@@ -141,3 +141,20 @@ h1 {
 
 .text-metier {}
 
+
+
+
+
+/* page blog */
+
+
+.btn-experience{
+    background-color: rgb(49, 85, 35);
+    max-width: 500px !important;
+    width: auto;
+    height: auto;
+}
+
+
+
+

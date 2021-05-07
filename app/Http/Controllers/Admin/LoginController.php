@@ -36,12 +36,14 @@ class LoginController extends Controller
                     auth()->login($user);
                     // auth()->user()->notify(new NewConnectionNotification); //envoit un mail à la connexion (Notification)
                     // return redirect()->route('dashboard');
+           / TODO: return page saisir expérience avec le bouton Administrateur si admin et le bouton amène sur la page index expérences
                     return redirect()->route('post.index');
+
                 } else {
                     return redirect()->route('login')->with('error', 'email et mot de passe ne correspondent pas');
                 }
             }
-            return redirect()->route('login')->with('error', 'une erreur s\'est produite');
+            return redirect()->route('login')->with('error', 'Vérifiez votre mail et votre mot de passe');
         }
     
     
