@@ -101,12 +101,24 @@
                         </li>
                     </ul>
                 </div>
-
             </nav>
+
+        </div>
+
+
+
     </header>
-
-
+    <div class="container-fluid mt-2 bg-warning">
+        @auth {{-- quand on est connecté --}}
+            Je suis connecté(e) en tant que {{ auth()->user()->firstName }} {{ auth()->user()->lastName }}
+            <a class="btn btn-secondary" href="{{ route('logout') }}">Se déconnecter</a>
+        @endauth
+        @can('admin') {{-- quand on est administrateur --}}
+            - Je suis un Administrateur
+        @endcan
     </div>
+
+
 
 
 
@@ -117,11 +129,11 @@
 
 
     <footer class="footer align-items-center text-center my-3 pt-3 text-light">
-{{-- <div class="h-100 align-items-center"> --}}
-    <p style="color:rgb(241, 208, 20)"><i>@PatriciaLayerle - Titre concepteur développeur d’applications</i></p>
-    <p><a href="{{ route('mentionsLegales') }}">Mentions légales</a>
-        - <b>Ce site n'utilise pas les cookies</b></p>
-{{-- </div>             --}}
+        {{-- <div class="h-100 align-items-center"> --}}
+        <p style="color:rgb(241, 208, 20)"><i>@PatriciaLayerle - Titre développeur d’applications</i></p>
+        <p><a href="{{ route('mentionsLegales') }}">Mentions légales</a>
+            - <b>Ce site n'utilise pas les cookies</b></p>
+        {{-- </div> --}}
     </footer>
 </body>
 

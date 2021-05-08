@@ -33,6 +33,11 @@ Route::get('login', [LoginController::class, 'index'])->middleware('guest')->nam
 Route::post('login', [LoginController::class, 'login'])->name('auth.login');
 Route::get('logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
 
+//route pour le middleweare Admin que j'ai créé
+Route::get('admin', function(){
+    Route::get('', [CustomRequest::class, 'index']);
+})->middleware('auth', 'admin');
+
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     // Route::view('', 'pages.admin.console')->name('admin');
     Route::get('', function () {
