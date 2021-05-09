@@ -71,7 +71,7 @@ class UserAdminController extends Controller
             // 'email_verified_at' => 'datetime',
     
         ]);
-        return redirect()->route('admin.user')->with('success', "L'administrateur $user->lastName $user->firstName a été créé(e)");
+        return redirect()->route('admin.user')->with('success', "L'utilisateur $user->lastName $user->firstName a été créé(e)");
     }
     /**
      * Display the specified resource.
@@ -156,13 +156,6 @@ class UserAdminController extends Controller
     }
  
 
-
-
-
-
-
-
-
     /**
      * Remove the specified resource from storage.
      *
@@ -172,6 +165,6 @@ class UserAdminController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('admin.user')->with('succes', "L'administrateur $user->lastName $user->firstName a été supprimé");
+        return redirect()->route('admin.user')->with('succes', "L'utilisateur $user->lastName $user->firstName a été supprimé");
     }
 }

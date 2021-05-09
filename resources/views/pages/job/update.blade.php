@@ -35,10 +35,10 @@
             @enderror
         </div>
         <div class="form-check form-switch mt-2">
-            <input type="checkbox" class="form-check-input" name="visible" value="true"
-                {{ $job->visible == true ? 'checked' : '' }}>
+            <input type="checkbox" class="form-check-input" name="published" value="true"
+                {{ $job->published == true ? 'checked' : '' }}>
             <label class="form-check-label col-sm-2" for="flexSwitchCheckDefault">Publier offre</label>
-            @error('visible')
+            @error('published')
                 <span style="color:red">{{ $message }}</span>
             @enderror
         </div>
@@ -46,7 +46,7 @@
             <input type="checkbox" class="form-check-input" name="closed" value="true"
                 {{ $job->closed == true ? 'checked' : '' }}>
             <label class="form-check-label col-sm-2" for="flexSwitchCheckDefault">Offre fermée</label>
-            @error('visible')
+            @error('published')
                 <span style="color:red">{{ $message }}</span>
             @enderror
         </div>

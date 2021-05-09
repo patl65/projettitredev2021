@@ -17,7 +17,7 @@ class JobController extends Controller
 {
     public function indexJob()
     {
-        $jobs = Job::where('visible', 1)->where('closed', 0)->orderBy('updated_at', 'desc')->get();
+        $jobs = Job::where('published', 1)->where('closed', 0)->orderBy('updated_at', 'desc')->get();
         return view('pages.jobs', ['jobs' => $jobs]);
     }
 
@@ -31,7 +31,7 @@ class JobController extends Controller
     //         return redirect()->route('blog.index')->withErrors($validator)->withInput();
     //     }
 
-    //     $posts = Post::with('category', 'videos', 'images')->where('visible', 1)->orderBy('updated_at', 'desc')->get();
+    //     $posts = Post::with('category', 'videos', 'images')->where('published', 1)->orderBy('updated_at', 'desc')->get();
     //     $categories = Category::all(); //pour récupérer les infos pour les boutons categories
     //     $q = request()->input('q');
     //     $posts = Post::where('title', 'like', "%$q%")

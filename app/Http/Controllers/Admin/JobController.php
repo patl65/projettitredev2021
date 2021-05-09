@@ -50,7 +50,7 @@ class JobController extends Controller
             'slug' => Str::slug($title),
             'contract' => $request->input('contract'),
             'job' => $request->input('job'),
-            'visible' => $request->input('visible') ? true : false,
+            'published' => $request->input('published') ? true : false,
             'closed' => $request->input('closed') ? true : false
         ]);
 
@@ -96,7 +96,7 @@ class JobController extends Controller
             'slug' => Str::slug($title),
             'contract' => $request->input('contract'),
             'job' => $request->input('job'),
-            'visible' => $request->input('visible') ? true : false,
+            'published' => $request->input('published') ? true : false,
             'closed' => $request->input('closed') ? true : false
         ]);
 

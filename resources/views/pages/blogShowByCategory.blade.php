@@ -13,7 +13,7 @@
 
                 {{-- TODO: pour vérif, à supp quand tout ok --}}
                 {{-- <div class="card-header">
-                    {{ $post->visible ? 'Oui' : 'Non' }}
+                    {{ $post->published ? 'Oui' : 'Non' }}
                 </div> --}}
 
                 <h5 class="card-header">{{ $post->title }}</h5>

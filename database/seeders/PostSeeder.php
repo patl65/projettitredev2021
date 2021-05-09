@@ -15,7 +15,7 @@ class PostSeeder extends Seeder
      */
     public function run()
     {
-        Post::factory(30)->hasVideos(3)->create();
+        Post::factory(30)->hasImages(2)->hasVideos(3)->create();
     }
 //pour info : 1 poste a 1 cotégorie (géré dans model/post) et 0 ou n photos ou videos
     }

@@ -13,10 +13,6 @@
                 src={{ asset('/images/layout/parler.png') }} alt="" width="10%" height="auto"><b> Partagez ici votre
                 expérience Latu</b></button></a>
 
-
-
-
-
     @include('inc.buttonsPost')
     @include('inc.search')
     @include('inc.flash')
@@ -50,7 +46,7 @@
 
                 {{-- TODO: pour vérif, à supp quand tout ok --}}
                 {{-- <div class="card-header">
-                    {{ $post->visible ? 'Oui' : 'Non' }}
+                    {{ $post->published ? 'Oui' : 'Non' }}
                 </div> --}}
 
                 <h5 class="card-header">{{ $post->title }}</h5>

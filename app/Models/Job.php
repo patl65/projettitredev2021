@@ -30,7 +30,7 @@ class Job extends Model
      * @var array $fillable
      */
     protected $fillable = [
-        'title', 'slug', 'contract', 'job', 'visible', 'closed', 'user_id'
+        'title', 'slug', 'contract', 'job', 'published', 'closed', 'user_id'
     ];
 
         //pour clé étrangère de User dans Post : 1 post a 1 seul créateur/modificateur/publicateur

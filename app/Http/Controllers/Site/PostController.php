@@ -16,7 +16,7 @@ class PostController extends Controller
 {
     public function indexBlog()
     {
-        $posts = Post::with('category', 'videos', 'images')->where('visible', 1)->orderBy('updated_at', 'desc')->get();
+        $posts = Post::with('category', 'videos', 'images')->where('published', 1)->orderBy('updated_at', 'desc')->get();
         $categories = Category::all(); //pour récupérer les infos qui ont des relations avec Post et pour les boutons
         return view('pages.blog', ['posts' => $posts, 'categories' => $categories]);
     }
@@ -31,7 +31,7 @@ class PostController extends Controller
             return redirect()->route('blog.index')->withErrors($validator)->withInput();
         }
 
-        $posts = Post::with('category', 'videos', 'images')->where('visible', 1)->orderBy('updated_at', 'desc')->get();
+        $posts = Post::with('category', 'videos', 'images')->where('published', 1)->orderBy('updated_at', 'desc')->get();
         $categories = Category::all(); //pour récupérer les infos pour les boutons categories
         $q = request()->input('q');
         $posts = Post::where('title', 'like', "%$q%")

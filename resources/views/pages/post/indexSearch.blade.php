@@ -33,7 +33,7 @@
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->updated_at->isoFormat('LL') }}</td>
                         <td>{{ $post->user->lastName }} {{ $post->user->firstName }}</td>
-                        <td>{{ $post->visible ? 'Oui' : '' }}</td>
+                        <td>{{ $post->published ? 'Oui' : '' }}</td>
                         <td>
                             <a style="color: red" href="{{ route('post.delete', $post->slug) }}">Supprimer</a>
                             <a style="color: green" href="{{ route('post.edit', $post->slug) }}">Modifier</a>

@@ -29,7 +29,8 @@ class PostFactory extends Factory
             'title' => $sentence,
             'slug' => Str::slug($sentence),//se remplit automatiquement avec le titre grâce à la variable$
             'content' => $this->faker->sentence(300),
-            'visible' => $this->faker->boolean(80),//80% sont masqués
+            'published' => $this->faker->boolean(80),//80% sont masqués
+            'refused' => $this->faker->boolean(40),//80% sont masqués
             'category_id' => $this->faker->numberBetween(1, Category::count()),
             'user_id' => $this->faker->numberBetween(1, User::count())
         ];

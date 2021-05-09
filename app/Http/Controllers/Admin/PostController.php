@@ -21,7 +21,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('user', 'category')->orderBy('updated_at', 'desc')->paginate(10);
+        // $posts = Post::with('user', 'category')->orderBy('updated_at', 'desc')->paginate(10);
+        $posts = Post::with('user', 'category')->where('post->category->name','!=', 'Expérience')->orderBy('updated_at', 'desc')->paginate(10);
         //paginate : pour avoir le tableau sur plusieurs pages
         // debug(request()->user());
         //pour la barre de debug : on a notre page et le debug s'affiche dans la barre
@@ -51,7 +52,7 @@ class PostController extends Controller
             'category' => 'required|string',
             'title' => 'required|string',
             'content' => 'required|string',
-            'visible' => 'string',
+            'published' => 'string',
         ]);
         if ($validator->fails()) {
             return redirect()->route('post.create')->withErrors($validator)->withInput();
@@ -63,7 +64,7 @@ class PostController extends Controller
             'title' => $title,
             'slug' => Str::slug($title),
             'content' => $request->input('content'),
-            'visible' => $request->input('visible') ? true : false
+            'published' => $request->input('published') ? true : false
         ]);
 
         $this->addVideos($request, $post);
@@ -111,20 +112,20 @@ class PostController extends Controller
             'category' => 'required|string',
             'title' => 'required|string',
             'content' => 'required|string',
-            'visible' => 'string',
+            'published' => 'string',
         ]);
         if ($validator->fails()) {
             return redirect()->route('post.edit', $post->slug)->withErrors($validator)->withInput();
         }
         $title = $request->input('title');
-        $visible = $request->input('visible') ? true : false;
+        $published = $request->input('published') ? true : false;
         $post->update([
             'category_id' => $request->input('category'),
             'user_id' => auth()->user()->id,
             'title' => $title,
             'slug' => Str::slug($title),
             'content' => $request->input('content'),
-            'visible' => $visible
+            'published' => $published
         ]);
 
         $this->addVideos($request, $post);
@@ -232,7 +233,7 @@ class PostController extends Controller
     }
 
     public function articleNonPublie(Post $post){
-        $posts = Post::where('visible', 0)->paginate(10);
+        $posts = Post::where('published', 0)->paginate(10);
         return view('pages.post.indexNonPublie', ['posts' => $posts]);
     }
 

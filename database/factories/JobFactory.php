@@ -30,7 +30,7 @@ class JobFactory extends Factory
             'slug' => Str::slug($sentence),//se remplit automatiquement avec le titre grâce à la variable$ et c'est pour l'URL (Str::slug)
             'contract' => $this->faker->sentence(10),
             'job' => $this->faker->sentence(300),
-            'visible' => $this->faker->boolean(80),//80% sont masqués
+            'published' => $this->faker->boolean(80),//80% sont masqués
             'closed' => $this->faker->boolean(80),//80% sont masqués
             'user_id' => $this->faker->numberBetween(1, User::count())
         ];

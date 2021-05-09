@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Latu</title>
+    <title>AdminPatriciaL</title>
 
     <!-- Fonts -->
     <link href="" rel="stylesheet">
@@ -43,7 +43,7 @@
 
         <div class="w-100">
 
-            <h1>Administration du site Latu entreprise</h1>
+            <h1>Administration du site Projet Titre Développeuse web Patricia Layerle</h1>
 
             <div class="mb-2">
                 <a class="btn btn-secondary" href="{{ route('login') }}">Se connecter</a>
@@ -75,6 +75,10 @@
                                 <a class="nav-link {{ request()->is('admin') ? 'active' : '' }}"
                                     href="{{ route('dashboard') }}">Tableau de bord</a>
                             </li> --}}
+                            <li class="nav-item">
+                                {{-- <a class="nav-link {{ request()->is('admin/experience') ? 'active' : '' }}"
+                                    href="{{ route('experience.index') }}">Epériences</a> --}}
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link {{ request()->is('admin/post') ? 'active' : '' }}"
                                     href="{{ route('post.index') }}">Articles</a>

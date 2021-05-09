@@ -34,7 +34,7 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => Hash::make('password'), // password //make('password') = le mot de passe dans la bdd, make('Azerty123')
             'remember_token' => Str::random(10),
-            'administrator'=> $this->faker->boolean(80),
+            'administrator'=> $this->faker->boolean(40),
     
         ];
     }

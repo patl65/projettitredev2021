@@ -14,6 +14,18 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Category::factory(10)->create();
+        Category::create([
+            'name' => 'Expérience',
+            'slug' => 'Expérience'
+        ]);
+        Category::create([
+            'name' => 'Actualité',
+            'slug' => 'Actualité'
+        ]);
+        Category::create([
+            'name' => 'Conseil de Pro',
+            'slug' => 'Conseil de Pro'
+        ]);
+        \App\Models\Category::factory(4)->create();
     }
 }

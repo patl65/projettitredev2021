@@ -13,6 +13,6 @@ class VideoYoutubeSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\VideoYoutube::factory(20)->create();
+        \App\Models\VideoYoutube::factory(10)->create();
     }
 }

@@ -16,13 +16,13 @@
 
         <div class="form-check form-switch mt-2">
             <label class="form-check-label col-sm-2" for="flexSwitchCheckDefault">Offre publiée</label>
-            <input type="checkbox" class="form-check-input" name="visible" value="true"
-                {{ $job->visible === 1 ? 'checked' : '' }}>
+            <input type="checkbox" class="form-check-input" name="published" value="true"
+                {{ $job->published === 1 ? 'checked' : '' }}>
         </div>
 
         <div class="form-check form-switch mt-2">
             <label class="form-check-label col-sm-2" for="flexSwitchCheckDefault">Offre fermée</label>
-            <input type="checkbox" class="form-check-input" name="visible" value="true"
+            <input type="checkbox" class="form-check-input" name="published" value="true"
                 {{ $job->closed === 1 ? 'checked' : '' }}>
         </div>
 

@@ -36,7 +36,7 @@
 
                         </td>
 
-                        <td>{{ $job->visible ? 'Oui' : '' }}</td>
+                        <td>{{ $job->published ? 'Oui' : '' }}</td>
                         <td>{{ $job->closed ? 'Oui' : '' }}</td>
                         <td>
                             <a style="color: red" href="{{ route('job.delete', $job->slug) }}">Supprimer</a>

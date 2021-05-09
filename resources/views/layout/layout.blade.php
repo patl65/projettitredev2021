@@ -108,13 +108,13 @@
 
 
     </header>
-    <div class="container-fluid mt-2 bg-warning">
+    <div class="container-fluid mt-2 bg-success">
         @auth {{-- quand on est connecté --}}
             Je suis connecté(e) en tant que {{ auth()->user()->firstName }} {{ auth()->user()->lastName }}
-            <a class="btn btn-secondary" href="{{ route('logout') }}">Se déconnecter</a>
+            <a class="btn btn-outline-info btn-sm m-1" href="{{ route('logout') }}">Se déconnecter</a>
         @endauth
         @can('admin') {{-- quand on est administrateur --}}
-            - Je suis un Administrateur
+            - Je suis Administratrice ou Administrateur
         @endcan
     </div>
 

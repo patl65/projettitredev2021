@@ -19,7 +19,7 @@ class CreateFailedJobsTable extends Migration
             $table->string('slug', 255);
             $table->string('contract');
             $table->text('job');
-            $table->boolean('visible')->default(0);
+            $table->boolean('published')->default(0);
             $table->boolean('closed')->default(0);
             $table->timestamp('failed_at')->useCurrent();
         });

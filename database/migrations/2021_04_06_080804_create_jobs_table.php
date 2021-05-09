@@ -19,7 +19,7 @@ class CreateJobsTable extends Migration
             $table->string('slug');
             $table->string('contract');
             $table->longText('job');
-            $table->boolean('visible')->default(0);
+            $table->boolean('published')->default(0);
             $table->boolean('closed')->default(0);
             $table->timestamps();
         });
