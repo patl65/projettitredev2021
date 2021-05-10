@@ -33,7 +33,6 @@
                             {{-- {{ $job->job }} --}}
                             {{-- {!! nl2br(htmlspecialchars($job->job)) !!} --}}
                             {!! nl2br(Str::limit($job->job, 500, '...')) !!}
-
                         </td>
 
                         <td>{{ $job->published ? 'Oui' : '' }}</td>

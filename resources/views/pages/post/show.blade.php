@@ -7,6 +7,7 @@
         <div class="mb-3">
             <a href="{{ route('category.show', $post->category->slug) }}"><button>Retour à la
                     Catégorie</button></a>
+            <a href="{{ route('post.indexExperience') }}"><button class="ms-2">Retour à l'index Expériences</button></a>
             <a href="{{ route('post.index') }}"><button>Retour à l'index Articles</button></a>
             - Article :
             <a style="color: red" href="{{ route('post.delete', $post->slug) }}">Supprimer</a>
@@ -39,6 +40,12 @@
             <input type="checkbox" class="form-check-input" name="published" value="true"
                 {{ $post->published === 1 ? 'checked' : '' }}>
         </div>
+        <div class="form-check form-switch mt-2">
+            <label class="form-check-label col-sm-2" for="flexSwitchCheckDefault">Expérience refusée</label>
+            <input type="checkbox" class="form-check-input" name="refused" value="true"
+                {{ $post->refused === 1 ? 'checked' : '' }}>
+        </div>
+
 
 
     @endsection

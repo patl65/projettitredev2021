@@ -16,7 +16,7 @@ class PostController extends Controller
 {
     public function indexBlog()
     {
-        $posts = Post::with('category', 'videos', 'images')->where('published', 1)->orderBy('updated_at', 'desc')->get();
+        $posts = Post::with('category', 'videos', 'images')->where('refused', 0)->where('published', 1)->orderBy('updated_at', 'desc')->get();
         $categories = Category::all(); //pour récupérer les infos qui ont des relations avec Post et pour les boutons
         return view('pages.blog', ['posts' => $posts, 'categories' => $categories]);
     }

@@ -39,10 +39,10 @@ Route::get('admin', function(){
 })->middleware('auth', 'admin');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
-    // Route::view('', 'pages.admin.console')->name('admin');
-    Route::get('', function () {
-        return view('pages.admin.dashboard');
-    })->name('dashboard');
+    Route::view('', 'pages.admin.console')->name('admin');
+    // Route::get('', function () {
+    //     return view('pages.admin.dashboard');
+    // })->name('dashboard');
     Route::get('user', [UserAdminController::class, 'index'])->name('admin.user');
     Route::get('user/{user:id}/delete', [UserAdminController::class, 'destroy'])->name('admin.user.delete');
     Route::get('user/create', [UserAdminController::class, 'create'])->name('admin.user.create');
@@ -72,6 +72,7 @@ Route::group(['prefix' => 'admin/category', 'middleware' => 'auth'], function ()
 //pour le blog : pour les posts de l'admin
 Route::group(['prefix' => 'admin/post', 'middleware' => 'auth'], function () {
     Route::get('', [PostController::class, 'index'])->name('post.index');
+    Route::get('experience', [PostController::class, 'indexExperience'])->name('post.indexExperience');
     Route::get('search', [PostController::class, 'search'])->name('post.index.search');
     //pour la barre de recherche
     Route::get('non-publie', [PostController::class, 'articleNonPublie'])->name('post.index.nonPublie');
@@ -87,7 +88,6 @@ Route::group(['prefix' => 'admin/post', 'middleware' => 'auth'], function () {
     Route::get('{post:slug}/deleteVideo/{video}', [PostController::class, 'destroyVideo'])->name('post.video.delete');
     //faire attention aux URL : que celà ne revienne pas au même {post:slug}/delete/{image} = {post:slug}/delete/{video}
 });
-
 
 
 //pour le blog : pour les pages visibles

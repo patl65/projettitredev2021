@@ -10,6 +10,7 @@ use App\Models\VideoYoutube;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
@@ -22,12 +23,30 @@ class PostController extends Controller
     public function index()
     {
         // $posts = Post::with('user', 'category')->orderBy('updated_at', 'desc')->paginate(10);
-        $posts = Post::with('user', 'category')->where('post->category->name','!=', 'Expérience')->orderBy('updated_at', 'desc')->paginate(10);
+        //1ere version : tous les articles
+        $posts = Post::with('user', 'category')->whereHas('category', function(Builder $category) {
+            return $category->where('name', '!=', 'Expérience');
+        })->orderBy('updated_at', 'desc')->paginate(10);
+        //whereHas va retourner un booléen  et la finction(Builder) va stocker les informations qu'on veut
         //paginate : pour avoir le tableau sur plusieurs pages
         // debug(request()->user());
         //pour la barre de debug : on a notre page et le debug s'affiche dans la barre
         return view('pages.post.index', ['posts' => $posts]);
     }
+
+    public function indexExperience()
+    {
+        $posts = Post::with('user', 'category')->whereHas('category', function(Builder $category) {
+            return $category->where('name', 'Expérience');
+        })->orderBy('updated_at', 'desc')->paginate(10);
+
+        $toCheck = Post::with('user', 'category')->whereHas('category', function(Builder $category) {
+            return $category->where('name', 'Expérience');
+        })->where('published', 0)->where('refused', 0)->orderBy('updated_at', 'desc')->paginate(10);
+
+        return view('pages.post.indexExperience', compact('posts', 'toCheck'));
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -53,6 +72,7 @@ class PostController extends Controller
             'title' => 'required|string',
             'content' => 'required|string',
             'published' => 'string',
+            'refused' => 'string',
         ]);
         if ($validator->fails()) {
             return redirect()->route('post.create')->withErrors($validator)->withInput();
@@ -64,7 +84,8 @@ class PostController extends Controller
             'title' => $title,
             'slug' => Str::slug($title),
             'content' => $request->input('content'),
-            'published' => $request->input('published') ? true : false
+            'published' => $request->input('published') ? true : false,
+            'refused' => $request->input('published') ? true : false
         ]);
 
         $this->addVideos($request, $post);
@@ -113,6 +134,7 @@ class PostController extends Controller
             'title' => 'required|string',
             'content' => 'required|string',
             'published' => 'string',
+            'refused' => 'string',
         ]);
         if ($validator->fails()) {
             return redirect()->route('post.edit', $post->slug)->withErrors($validator)->withInput();
@@ -125,7 +147,8 @@ class PostController extends Controller
             'title' => $title,
             'slug' => Str::slug($title),
             'content' => $request->input('content'),
-            'published' => $published
+            'published' => $published,
+            'refused' => $published
         ]);
 
         $this->addVideos($request, $post);

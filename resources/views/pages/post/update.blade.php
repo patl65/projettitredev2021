@@ -5,6 +5,7 @@
 
     <div class="d-flex">
         <h3>Modifier article :</h3>
+        <a href="{{ route('post.indexExperience') }}"><button class="ms-2">Retour à l'index Expériences</button></a>
         <a href="{{ route('post.index') }}"><button class="ms-2">Retour à l'index Articles</button></a>
         <a href="{{ route('category.show', $post->category->slug) }}"><button class="ms-2">Retour à la
                 Catégorie</button></a>
@@ -76,6 +77,14 @@
                 {{ $post->published == true ? 'checked' : '' }}>
             <label class="form-check-label col-sm-2 ms-0" for="flexSwitchCheckDefault">Publier article</label>
             @error('published')
+                <span style="color:red">{{ $message }}</span>
+            @enderror
+        </div>
+        <div class="form-check form-switch mt-2">
+            <input type="checkbox" class="form-check-input" name="refused" value="true"
+                {{ $post->refused == true ? 'checked' : '' }}>
+            <label class="form-check-label col-sm-2 ms-0" for="flexSwitchCheckDefault">Expérience refusée</label>
+            @error('refused')
                 <span style="color:red">{{ $message }}</span>
             @enderror
         </div>

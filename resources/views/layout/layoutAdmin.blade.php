@@ -43,7 +43,9 @@
 
         <div class="w-100">
 
-            <h1>Administration du site Projet Titre Développeuse web Patricia Layerle</h1>
+            <h2>Administration du site</h2>
+            <h2>Projet Titre Développeuse web</h2>
+            <h2>Patricia Layerle</h2>
 
             <div class="mb-2">
                 <a class="btn btn-secondary" href="{{ route('login') }}">Se connecter</a>
@@ -76,8 +78,8 @@
                                     href="{{ route('dashboard') }}">Tableau de bord</a>
                             </li> --}}
                             <li class="nav-item">
-                                {{-- <a class="nav-link {{ request()->is('admin/experience') ? 'active' : '' }}"
-                                    href="{{ route('experience.index') }}">Epériences</a> --}}
+                                <a class="nav-link {{ request()->is('admin/post/experience') ? 'active' : '' }}"
+                                    href="{{ route('post.indexExperience') }}">Epériences</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{ request()->is('admin/post') ? 'active' : '' }}"
