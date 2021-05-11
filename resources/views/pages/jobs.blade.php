@@ -14,7 +14,7 @@
 
                 {{-- TODO: pour vérif, à supp quand tout ok --}}
                 {{-- <div class="card-header">
-                    {{ $job->visible ? 'Oui' : 'Non' }}
+                    {{ $job->published ? 'Oui' : 'Non' }}
                 </div> --}}
                 {{-- TODO: pour vérif, à supp quand tout ok --}}
                 {{-- <div class="card-header">

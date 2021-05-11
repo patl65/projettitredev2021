@@ -17,7 +17,7 @@ class CategoryController extends Controller
     {
         $categories = Category::all(); 
                 $category->load(['posts' => function($q) {
-            $q->where('visible', 1)->orderBy('updated_at', 'desc');
+            $q->where('published', 1)->orderBy('updated_at', 'desc');
         }]);
         //on recupérer les posts avec un affichage selon un critère et un classement et dans post il y a déjà photos et vidéos
         return view('pages.blogShowByCategory', ['categories' => $categories, 'category' => $category]);

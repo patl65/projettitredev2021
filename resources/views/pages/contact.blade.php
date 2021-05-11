@@ -51,7 +51,7 @@
 
         <div class="p-3 mb-2 bg-light text-dark" style="width: 40rem;"">
                                                             <p><b>Latu entreprise</b></p>
-                                                            <p>05-62-96-70-67</p>
+                                                            <p>05-62-967-067</p>
                                                             <p>Rue des Gargousses, 65000 Tarbes</p>
                                                             <center> <iframe src="
             https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5812.81836732359!2d0.0780065663225181!3d43.242845421334046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x33dfaebc10265261!2slatu%20entreprise!5e0!3m2!1sfr!2sfr!4v1617196387098!5m2!1sfr!2sfr"

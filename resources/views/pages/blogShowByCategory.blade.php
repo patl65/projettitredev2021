@@ -3,7 +3,7 @@
 
     <h1>Conseils de Pro & Actualités : {{ $category->name }}</h1>
 
-@include('inc.buttons')
+    @include('inc.buttonsPost')
 @include('inc.search')
 
     <div class="d-flex row justify-content-sm-around">

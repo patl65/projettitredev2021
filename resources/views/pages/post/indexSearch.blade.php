@@ -18,8 +18,8 @@
             <thead>
                 <tr>
                     <th scope="col">Catégorie</th>
-                    <th scope="col">Titre</th>
                     <th scope="col">Date</th>
+                    <th scope="col">Titre</th>
                     <th scope="col">Créateur</th>
                     <th scope="col">Publié</th>
                     <th scope="col">Actions</th>
@@ -30,8 +30,8 @@
                 @foreach ($posts as $post)
                     <tr>
                         <td>{{ $post->category->name }}</td>
-                        <td>{{ $post->title }}</td>
                         <td>{{ $post->updated_at->isoFormat('LL') }}</td>
+                        <td><a href="{{ route('post.show', $post->slug) }}">{{ $post->title }}</a></td>
                         <td>{{ $post->user->lastName }} {{ $post->user->firstName }}</td>
                         <td>{{ $post->published ? 'Oui' : '' }}</td>
                         <td>

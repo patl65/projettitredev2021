@@ -7,7 +7,7 @@
 
     <ul>
         @foreach ($category->posts as $post)
-            <li><b>{{ $post->title }}</b> - <span style="color: blue">Article : {{ $post->visible ? 'Publié' : 'Non publié' }}</span>
+            <li><b>{{ $post->title }}</b> - <span style="color: blue">Article : {{ $post->published ? 'Publié' : 'Non publié' }}</span>
                  - <a style="color: green" href="{{ route('post.show', $post->slug) }}">Afficher article</a>
             </li>
         @endforeach

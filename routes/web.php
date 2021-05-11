@@ -97,8 +97,9 @@ Route::group(['prefix' => 'blog'], function () {
     //pour la barre de recherche
     Route::get('post/{post:slug}', [SitePostController::class, 'showPostBlog'])->name('blog.post.show');
     Route::get('{category:slug}', [SiteCategoryController::class, 'showBlogByCategory'])->name('blog.category.show');
-// TODO: voir notes
-
+    Route::get('newExperience', [SitePostController::class, 'create'])->name('blog.createExperience');
+    //pour créer un article expérience
+    
 });
 
 

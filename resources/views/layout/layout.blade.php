@@ -110,11 +110,16 @@
     </header>
     <div class="container-fluid mt-2 bg-success">
         @auth {{-- quand on est connecté --}}
-            Je suis connecté(e) en tant que {{ auth()->user()->firstName }} {{ auth()->user()->lastName }}
+        @cannot('admin')   {{-- quand on n'est pas administrateur --}}
+        Je suis connecté(e) en tant que {{ auth()->user()->firstName }} {{ auth()->user()->lastName }}
             <a class="btn btn-outline-info btn-sm m-1" href="{{ route('logout') }}">Se déconnecter</a>
-        @endauth
-        @can('admin') {{-- quand on est administrateur --}}
-            - Je suis Administratrice ou Administrateur
+            @endcannot
+            @endauth
+            @can('admin') {{-- quand on est administrateur --}}
+        Je suis connecté(e) en tant que {{ auth()->user()->firstName }} {{ auth()->user()->lastName }}
+        <a class="btn btn-outline-info btn-sm m-1" href="{{ route('logout') }}">Se déconnecter</a>
+- Je suis Admin        <a class="btn btn-outline-info btn-sm m-1" href="{{ route('admin') }}">Console Administrateur</a>
+
         @endcan
     </div>
 

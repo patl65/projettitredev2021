@@ -3,7 +3,7 @@
 
     <h1>Conseils de Pro & Actualités</h1>
 
-    @include('inc.buttons')
+    @include('inc.buttonsPost')
 
     <div class="container bg-light mt-5 mb-5">
 

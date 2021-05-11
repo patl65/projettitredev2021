@@ -79,7 +79,7 @@
                             </li> --}}
                             <li class="nav-item">
                                 <a class="nav-link {{ request()->is('admin/post/experience') ? 'active' : '' }}"
-                                    href="{{ route('post.indexExperience') }}">Epériences</a>
+                                    href="{{ route('post.indexExperience') }}">Expériences</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{ request()->is('admin/post') ? 'active' : '' }}"

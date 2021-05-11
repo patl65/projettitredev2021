@@ -85,7 +85,7 @@ class PostController extends Controller
             'slug' => Str::slug($title),
             'content' => $request->input('content'),
             'published' => $request->input('published') ? true : false,
-            'refused' => $request->input('published') ? true : false
+            'refused' => $request->input('refused') ? true : false
         ]);
 
         $this->addVideos($request, $post);
@@ -141,6 +141,7 @@ class PostController extends Controller
         }
         $title = $request->input('title');
         $published = $request->input('published') ? true : false;
+        $refused = $request->input('refused') ? true : false;
         $post->update([
             'category_id' => $request->input('category'),
             'user_id' => auth()->user()->id,
@@ -148,7 +149,7 @@ class PostController extends Controller
             'slug' => Str::slug($title),
             'content' => $request->input('content'),
             'published' => $published,
-            'refused' => $published
+            'refused' => $refused
         ]);
 
         $this->addVideos($request, $post);

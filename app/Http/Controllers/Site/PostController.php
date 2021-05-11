@@ -49,4 +49,69 @@ class PostController extends Controller
     }
 
 
+        /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $categories = Category::all(); //pour la liste déroulante des catégories
+        return view('pages.blogExperienceCreate', ['categories' => $categories]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'category' => 'required|string',
+            'title' => 'required|string',
+            'content' => 'required|string',
+            'published' => 'string',
+            'refused' => 'string',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->route('post.create')->withErrors($validator)->withInput();
+        }
+        $title = $request->input('title');
+        $post = Post::create([
+            'category_id' => $request->input('category'),
+            'user_id' => auth()->user()->id,
+            'title' => $title,
+            'slug' => Str::slug($title),
+            'content' => $request->input('content'),
+            'published' => $request->input('published') ? true : false,
+            'refused' => $request->input('refused') ? true : false
+        ]);
+
+        $this->addImages($request, $post);
+
+        return redirect()->route('blog.index')->with('success', "Expérience réussie !!");
+    }
+
+    private function addImages(Request $request, Post $post)
+    {
+        if ($request->file('images')) {
+            //revient à si le input n'est pas vide
+            foreach ($request->file('images') as $file) {
+                if ($file) {
+                    //$post->images()->detach($post->images);
+                    //mis en comentaire car si non supprime les photos existantes por la nouvelle sélection dans la BDD
+                    $image = Image::create([
+                        'name' => $file->getClientOriginalName()
+                        // ,'slug' => $file->getClientOriginalName()
+                    ]);
+                    $file->storePubliclyAs('public/postsExperience', $file->getClientOriginalName());
+                    $post->images()->attach($image);
+                }
+            }
+        }
+    }
+
+
 }

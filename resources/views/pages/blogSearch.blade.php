@@ -3,7 +3,7 @@
 
     <h1>Conseils de Pro & Actualités</h1>
 
-    @include('inc.buttons')
+    @include('inc.buttonsPost')
     @include('inc.search')
     @include('inc.flash')
 
