@@ -36,9 +36,8 @@ class PostController extends Controller
         $q = request()->input('q');
         $posts = Post::where('title', 'like', "%$q%")
             ->orWhere('content', 'like', "%$q%")->get();
-            
-        return view('pages.blogSearch', ['posts' => $posts, 'categories' => $categories]);
 
+        return view('pages.blogSearch', ['posts' => $posts, 'categories' => $categories]);
     }
 
 
@@ -49,12 +48,12 @@ class PostController extends Controller
     }
 
 
-        /**
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createExperience()
     {
         $categories = Category::all(); //pour la liste déroulante des catégories
         return view('pages.blogExperienceCreate', ['categories' => $categories]);
@@ -66,21 +65,33 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storeExperience(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'category' => 'required|string',
             'title' => 'required|string',
             'content' => 'required|string',
             'published' => 'string',
             'refused' => 'string',
         ]);
         if ($validator->fails()) {
-            return redirect()->route('post.create')->withErrors($validator)->withInput();
+            return redirect()->route('blog.experience.create')->withErrors($validator)->withInput();
         }
         $title = $request->input('title');
         $post = Post::create([
-            'category_id' => $request->input('category'),
+
+
+            // 'category_id' => $request->input('category'),
+
+            // 'category_id' => category()->name === "Expérience",
+            // 'category_id' => $category->name === "Expérience",
+            // 'category_id' => $request->name === "Expérience",
+            // 'category_id' => $request->category === "Expérience",
+            // 'category_id' => category->"Expérience",
+            'category_id' => $category->"Expérience",
+
+
+            // 'category_id' => 1,
+
             'user_id' => auth()->user()->id,
             'title' => $title,
             'slug' => Str::slug($title),
@@ -89,29 +100,45 @@ class PostController extends Controller
             'refused' => $request->input('refused') ? true : false
         ]);
 
-        $this->addImages($request, $post);
+        $this->addImagesExperience($request, $post);
 
-        return redirect()->route('blog.index')->with('success', "Expérience réussie !!");
+        return redirect()->route('blog.index')->with('success', "Expérience réussie !! En attente de validation par notre administrateur");
     }
 
-    private function addImages(Request $request, Post $post)
+    private function addImagesExperience(Request $request, Post $post)
     {
+        $fileName = uniqid() . '-' .  $picture->getClientOriginalName();
+        //pour mes essais
+
         if ($request->file('images')) {
             //revient à si le input n'est pas vide
             foreach ($request->file('images') as $file) {
                 if ($file) {
-                    //$post->images()->detach($post->images);
-                    //mis en comentaire car si non supprime les photos existantes por la nouvelle sélection dans la BDD
-                    $image = Image::create([
-                        'name' => $file->getClientOriginalName()
-                        // ,'slug' => $file->getClientOriginalName()
-                    ]);
-                    $file->storePubliclyAs('public/postsExperience', $file->getClientOriginalName());
-                    $post->images()->attach($image);
+                    // //$post->images()->detach($post->images);
+                    // //mis en comentaire car si non supprime les photos existantes por la nouvelle sélection dans la BDD
+                    // $image = Image::create([
+                    //     'name' => $file->getClientOriginalName()
+                    //     // ,'slug' => $file->getClientOriginalName()
+                    // ]);
+                    // // $file->storePubliclyAs('public/posts', $file->getClientOriginalName());
+                    // $file->storePubliclyAs('public/posts', $file->getClientOriginalName());
+                    // //ne modifie pas le nom du fichier
+                    // $post->images()->attach($image);
+
+
+
+
+                    // $picturename = uniqid('picture') . '-' .  $picture->getClientOriginalName();
+
+                    // $image = Image::create([
+                    //     'name' => $fileName
+                    //     // ,'slug' => $file->getClientOriginalName()
+                    // ]);
+                    // // $file->storePubliclyAs('public/posts', $file->getClientOriginalName());
+                    // $file->storePubliclyAs('public/posts', $fileName);
+                    // $post->images()->attach($image);
                 }
             }
         }
     }
-
-
 }

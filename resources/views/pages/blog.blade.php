@@ -9,14 +9,16 @@
 
 
 
-    <a href="{{ route('login') }}"><button type=" button" class="btn btn-success text-info btn-experience me-2 mb-2"><img
-                src={{ asset('/images/layout/parler.png') }} alt="" width="10%" height="auto"><b> Partagez ici votre
+    <a href="{{ route('blog.experience.create') }}"><button type=" button"
+            class="btn btn-success text-info btn-experience me-2 mb-2"><img src={{ asset('/images/layout/parler.png') }}
+                alt="" width="10%" height="auto"><b> Partagez ici votre
                 expérience Latu</b></button></a>
 
     @include('inc.buttonsPost')
     @include('inc.search')
-    @include('inc.flash')
-
+    <div class="container d-flex align-items-center flex-column bg-light mb-2" style="width: 50rem;">
+        @include('inc.flash')
+     </div>
 
     <div class="d-flex row justify-content-sm-around">
         @foreach ($posts as $post)
@@ -60,29 +62,29 @@
                 </div>
 
                 {{-- <div class="d-flex justify-content-around blog-card-photo-vid"> --}}
-                <div class="parent-container card-blog-body mt-2>
-                                  @foreach ($post->images as $image)
-                    <a href="{{ asset('storage/posts/' . $image->name) }}">
-                        <img class="img-fluid card-blog-img" src="{{ asset('storage/posts/' . $image->name) }}"
-                            alt="{{ $image->name }}">
-                    </a>
+                <div class="parent-container card-blog-body mt-2">
+                    @foreach ($post->images as $image)
+                        <a href="{{ asset('/storage/posts/' . $image->name) }}">
+                            <img class="img-fluid card-blog-img" src="{{ asset('/storage/posts/' . $image->name) }}"
+                                alt="{{ $image->name }}">
+                        </a>
+                    @endforeach
+                </div>
+                <div class="embed-responsive embed-responsive-16by9 card-blog-body mt-2">
+                    @foreach ($post->videos as $video)
+                        <iframe class="embed-responsive-item card-blog-video"
+                            src="https://www.youtube.com/embed/{{ $video->link }}" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    @endforeach
+                </div>
+                {{-- </div> --}}
+                <div class="card-footer">
+                    {{ $post->updated_at->isoFormat('LL') }}
+                    {{-- - <a href="{{ route('blog.post.show', $post->slug) }}"><button type="button" class="btn btn-outline-dark">Article complet</button></a> --}}
+                </div>
+            </div>
         @endforeach
-    </div>
-    <div class="embed-responsive embed-responsive-16by9 card-blog-body mt-2">
-        @foreach ($post->videos as $video)
-            <iframe class="embed-responsive-item card-blog-video" src="https://www.youtube.com/embed/{{ $video->link }}"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-        @endforeach
-    </div>
-    {{-- </div> --}}
-    <div class="card-footer">
-        {{ $post->updated_at->isoFormat('LL') }}
-        {{-- - <a href="{{ route('blog.post.show', $post->slug) }}"><button type="button" class="btn btn-outline-dark">Article complet</button></a> --}}
-    </div>
-    </div>
-    @endforeach
     </div>
 
 @endsection

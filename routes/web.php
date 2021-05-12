@@ -34,7 +34,7 @@ Route::post('login', [LoginController::class, 'login'])->name('auth.login');
 Route::get('logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
 
 //route pour le middleweare Admin que j'ai créé
-Route::get('admin', function(){
+Route::get('admin', function () {
     Route::get('', [CustomRequest::class, 'index']);
 })->middleware('auth', 'admin');
 
@@ -95,11 +95,11 @@ Route::group(['prefix' => 'blog'], function () {
     Route::get('', [SitePostController::class, 'indexBlog'])->name('blog.index');
     Route::get('search', [SitePostController::class, 'searchBlog'])->name('blog.index.search');
     //pour la barre de recherche
+    Route::get('newExperience', [SitePostController::class, 'createExperience'])->middleware('auth')->name('blog.experience.create');
+    Route::post('', [SitePostController::class, 'storeExperience'])->name('blog.experience.store');
+    //pour créer un article expérience
     Route::get('post/{post:slug}', [SitePostController::class, 'showPostBlog'])->name('blog.post.show');
     Route::get('{category:slug}', [SiteCategoryController::class, 'showBlogByCategory'])->name('blog.category.show');
-    Route::get('newExperience', [SitePostController::class, 'create'])->name('blog.createExperience');
-    //pour créer un article expérience
-    
 });
 
 
@@ -128,13 +128,12 @@ Route::group(['prefix' => 'offres-emploi'], function () {
     Route::get('search', [SiteJobController::class, 'searchJob'])->name('jobs.index.search');
     //pour la barre de recherche
     Route::get('{post:slug}', [SiteJobController::class, 'showJob'])->name('jobs.post.show');
-
 });
 
 
 //pour la mise en hébergement : la récup de la bdd, son initialisation et initialisation des clées at autres
-if(app()->environment('install')) {
-    Route::get('/install', function() {
+if (app()->environment('install')) {
+    Route::get('/install', function () {
         //pour que le site soit optimal
         //Artisan::call('key:generate');
         Artisan::call('package:discover');
@@ -156,7 +155,7 @@ if(app()->environment('install')) {
         ]);
     });
 
-    Route::get('/clear', function() {
+    Route::get('/clear', function () {
         Artisan::call('cache:clear');
         Artisan::call('view:clear');
         Artisan::call('route:clear');
