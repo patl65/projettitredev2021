@@ -10,24 +10,23 @@
         {{-- enctype pour les fichiers photos --}}
         @csrf
         <div class="form-group  mt-2">
-            <label for="title">Titre</label>
-            <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
+            <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}"
+                placeholder="Votre titre">
             @error('title')
                 <span style="color:red">{{ $message }}</span>
             @enderror
         </div>
         <div class="form-group mt-2">
-            <label for="content">Texte</label>
             <p class="">
-                <textarea type="textbox" name="content" id="editor" rows="10" class="form-control textarea-control"
-                    > {{ old('content') }}</textarea>
+                <textarea type="textbox" name="content" id="content" rows="5" class="form-control textarea-control"
+                    placeholder="Votre texte"></textarea>
             </p>
             @error('content')
-            <span style="color:red">{{ $message }}</span>
-        @enderror
+                <span style="color:red">{{ $message }}</span>
+            @enderror
         </div>
         <div class="form-group  mt-2">
-            <label for="image">Photos</label>
+            <label for="image">Vos photos</label>
             <input type="file" multiple name="images[]" class="form-control" id="image">
             @error('images')
                 <span style="color:red">{{ $message }}</span>
