@@ -38,7 +38,7 @@ Route::get('admin', function () {
     Route::get('', [CustomRequest::class, 'index']);
 })->middleware('auth', 'admin');
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::view('', 'pages.admin.console')->name('admin');
     // Route::get('', function () {
     //     return view('pages.admin.dashboard');
@@ -57,7 +57,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
 
 //pour le blog : pour les catégories
-Route::group(['prefix' => 'admin/category', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'admin/category', 'middleware' => 'admin'], function () {
     Route::get('', [CategoryController::class, 'index'])->name('category.index');
     Route::get('create', [CategoryController::class, 'create'])->name('category.create');
     Route::post('', [CategoryController::class, 'store'])->name('category.store');
@@ -70,7 +70,7 @@ Route::group(['prefix' => 'admin/category', 'middleware' => 'auth'], function ()
 });
 
 //pour le blog : pour les posts de l'admin
-Route::group(['prefix' => 'admin/post', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'admin/post', 'middleware' => 'admin'], function () {
     Route::get('', [PostController::class, 'index'])->name('post.index');
     Route::get('experience', [PostController::class, 'indexExperience'])->name('post.indexExperience');
     Route::get('search', [PostController::class, 'search'])->name('post.index.search');
@@ -112,7 +112,7 @@ Route::post('/contact/send', [ContactController::class, 'contact'])->name('conta
 
 
 //pour les jobs
-Route::group(['prefix' => 'admin/job', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'admin/job', 'middleware' => 'admin'], function () {
     Route::get('', [JobController::class, 'index'])->name('job.index');
     Route::get('create', [JobController::class, 'create'])->name('job.create');
     Route::post('', [JobController::class, 'store'])->name('job.store');
