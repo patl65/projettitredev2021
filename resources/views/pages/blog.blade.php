@@ -80,7 +80,7 @@
                 </div>
                 {{-- </div> --}}
                 <div class="card-footer">
-                    {{ $post->updated_at->isoFormat('LL') }}
+                    {{ $post->updated_at->isoFormat('LL') }} - {{$post->user->userName }}
                     {{-- - <a href="{{ route('blog.post.show', $post->slug) }}"><button type="button" class="btn btn-outline-dark">Article complet</button></a> --}}
                 </div>
             </div>

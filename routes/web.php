@@ -51,7 +51,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     //edit : route qui lance l'affichage pour l'update
     Route::post('user/{user:id}/update-email', [UserAdminController::class, 'updateEmail'])->name('admin.user.update.email');
     Route::post('user/{user:id}/update-password', [UserAdminController::class, 'updatePassword'])->name('admin.user.update.password');
-    Route::post('user/{user:id}', [UserAdminController::class, 'update'])->name('admin.user.update');
+    Route::post('user/{user:id}/update', [UserAdminController::class, 'update'])->name('admin.user.update');
     //ordre des pages importants : mettre en dernier avec ID car si non elles vont toutes demander l'ID et au départ je n'en avais pas mis sur update email et password
 });
 

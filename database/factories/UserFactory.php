@@ -28,14 +28,20 @@ class UserFactory extends Factory
         $lastName = $this->faker->lastName();
 
         return [
-            'firstName' => $firstName,
-            'lastName' => $lastName,
+            'firstName' => $this->faker->firstName(),
+            'lastName' => $this->faker->lastName(),
+            'userName' => $this->faker->unique()->userName(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => Hash::make('password'), // password //make('password') = le mot de passe dans la bdd, make('Azerty123')
-            'remember_token' => Str::random(10),
-            'administrator'=> $this->faker->boolean(40),
-    
+            'password' => Hash::make('password'),
+            'phoneNumber' => $this->faker->phoneNumber(),
+            'address' => $this->faker->address(),
+            'postcode' => $this->faker->postcode(),
+            'city' => $this->faker->city(),
+            'country' => $this->faker->country(),
+            'administrator' => $this->faker->boolean(0),
+            'gtc' => $this->faker->boolean(100),
+            'remember_token' => Str::random(10),    
         ];
     }
 

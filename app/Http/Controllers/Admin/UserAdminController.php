@@ -15,15 +15,16 @@ class UserAdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
-   //import des utilisateurs
-   public function index(){
 
-    // import tous les utilisateurs        
-    // $users = User::all();
-    $users = User::orderBy('lastName')->get();
-    return view('pages.admin.indexUserAdmin', ['users' => $users]);
-}
+    //import des utilisateurs
+    public function index()
+    {
+
+        // import tous les utilisateurs        
+        // $users = User::all();
+        $users = User::orderBy('lastName')->get();
+        return view('pages.admin.indexUserAdmin', ['users' => $users]);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -46,30 +47,51 @@ class UserAdminController extends Controller
         $validator = Validator::make($request->all(), [
             'firstName' => 'required|string',
             'lastName' => 'required|string',
+            'userName' => 'required|string|unique:users,userName',
             'email' => 'required|email|unique:users,email',
             //unique va vérififier dans la bdd s'il y a déjà un mail identique qui existe
             'password' => 'required|string',
             'confirm_password' => 'required|same:password',
+            'phoneNumber' => 'required|string',
+            'address' => 'required|string',
+            'postcode' => 'required|string',
+            'city' => 'required|string',
+            'country' => 'required|string',
             'administrator' => '',
+            'gtc' => '',
         ]);
         if ($validator->fails()) {
             return redirect()->route('admin.user.create')->withErrors($validator)->withInput();
         }
         $firstName = $request->input('firstName');
         $lastName = $request->input('lastName');
+        $userName = $request->input('userName');
         $email = $request->input('email');
         $password = Hash::make($request->input('password'));
+        $phoneNumber = $request->input('phoneNumber');
+        $address = $request->input('address');
+        $postcode = $request->input('postcode');
+        $city = $request->input('city');
+        $country = $request->input('country');
         $administrator = (bool) $request->input('administrator');
         //(bool) car la chekbox renvoit un string true ou false et donc on lui que c'est un booléen
-       $user = User::create([
+        $gtc = (bool) $request->input('gtc');
+
+        $user = User::create([
             'firstName' => $firstName,
             'lastName' => $lastName,
+            'userName' => $userName,
             'email' => $email,
             'password' => $password,
+            'phoneNumber' => $phoneNumber,
+            'address' => $address,
+            'postcode' => $postcode,
+            'city' => $city,
+            'country' => $country,
             'administrator' => $administrator,
+            'gtc' => $gtc,
             // 'remember_token',
             // 'email_verified_at' => 'datetime',
-    
         ]);
         return redirect()->route('admin.user')->with('success', "L'utilisateur $user->lastName $user->firstName a été créé(e)");
     }
@@ -107,18 +129,39 @@ class UserAdminController extends Controller
         $validator = Validator::make($request->all(), [
             'firstName' => 'required|string',
             'lastName' => 'required|string',
+            'userName' => 'required|string|unique:users,userName',
+            'phoneNumber' => 'required|string',
+            'address' => 'required|string',
+            'postcode' => 'required|string',
+            'city' => 'required|string',
+            'country' => 'required|string',
             'administrator' => '',
+            'gtc' => '',
         ]);
         if ($validator->fails()) {
-            return redirect()->route('admin.user.create')->withErrors($validator)->withInput();
+            return redirect()->route('admin.user.edit', $user->id)->withErrors($validator)->withInput();
+
         }
         $firstName = $request->input('firstName');
         $lastName = $request->input('lastName');
+        $userName = $request->input('userName');
+        $phoneNumber = $request->input('phoneNumber');
+        $address = $request->input('address');
+        $postcode = $request->input('postcode');
+        $city = $request->input('city');
+        $country = $request->input('country');
         $administrator = (bool) $request->input('administrator');
-        //(bool) car la checkbox renvoit un string true ou false et donc on lui que c'est un booléen
-       $user->update([
+        //(bool) car la chekbox renvoit un string true ou false et donc on lui que c'est un booléen
+
+        $user->update([
             'firstName' => $firstName,
             'lastName' => $lastName,
+            'userName' => $userName,
+            'phoneNumber' => $phoneNumber,
+            'address' => $address,
+            'postcode' => $postcode,
+            'city' => $city,
+            'country' => $country,
             'administrator' => $administrator,
         ]);
         return redirect()->route('admin.user.edit', $user->id)->with('success', "$user->lastName $user->firstName a été mis(e) à jour");
@@ -138,8 +181,8 @@ class UserAdminController extends Controller
         ]);
         return redirect()->route('admin.user.edit', $user->id)->with('success', "Email mis à jour pour $user->lastName $user->firstName");
     }
- 
- 
+
+
     public function updatePassword(Request $request, User $user)
     {
         $validator = Validator::make($request->all(), [
@@ -151,10 +194,10 @@ class UserAdminController extends Controller
         }
         $user->update([
             'password' => Hash::make($request->input('password')),
-         ]);
+        ]);
         return redirect()->route('admin.user.edit', $user->id)->with('success', "Mot de passe mis à jour pour $user->lastName $user->firstName");
     }
- 
+
 
     /**
      * Remove the specified resource from storage.

@@ -2,7 +2,7 @@
 {{-- @extends('layout.layoutAdminCoreui') --}}
 @section('content')
 
-@include('inc.flash')
+    @include('inc.flash')
 
 
     <div class="d-flex">
@@ -31,10 +31,65 @@
                 @enderror
             </div>
             <div>
+                <label for="userName" class="col-sm-3 col-form-label">Nom d'utilisateur</label>
+                <input type="text" id="userName" name="userName" placeholder="Nom d'utilisateur"
+                    value="{{ $user->userName }}" class="col-sm-3">
+                @error('userName')
+                    <span style="color:red">{{ $message }}</span>
+                @enderror
+            </div>
+            <div>
+                <label for="phoneNumber" class="col-sm-3 col-form-label">Téléphone</label>
+                <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Téléphone"
+                    value="{{ $user->phoneNumber }}" class="col-sm-3">
+                @error('phoneNumber')
+                    <span style="color:red">{{ $message }}</span>
+                @enderror
+            </div>
+            <div>
+                <label for="address" class="col-sm-3 col-form-label">Adresse</label>
+                <input type="text" id="address" name="address" placeholder="Adressse" value="{{ $user->address }}"
+                    class="col-sm-3">
+                @error('address')
+                    <span style="color:red">{{ $message }}</span>
+                @enderror
+            </div>
+            <div>
+                <label for="postcode" class="col-sm-3 col-form-label">Code postal</label>
+                <input type="text" id="postcode" name="postcode" placeholder="Code postal" value="{{ $user->postcode }}"
+                    class="col-sm-3">
+                @error('postcode')
+                    <span style="color:red">{{ $message }}</span>
+                @enderror
+            </div>
+            <div>
+                <label for="city" class="col-sm-3 col-form-label">Ville</label>
+                <input type="text" id="city" name="city" placeholder="Ville" value="{{ $user->city }}"
+                    class="col-sm-3">
+                @error('city')
+                    <span style="color:red">{{ $message }}</span>
+                @enderror
+            </div>
+            <div>
+                <label for="country" class="col-sm-3 col-form-label">Pays</label>
+                <input type="text" id="country" name="country" placeholder="Pays" value="{{ $user->country }}"
+                    class="col-sm-3">
+                @error('country')
+                    <span style="color:red">{{ $message }}</span>
+                @enderror
+            </div>
+            <div>
                 <label for="scales" class="col-sm-3 col-form-label">Administrateur</label>
                 <input type="checkbox" name="administrator" value="true"
                     {{ $user->administrator === 1 ? 'checked' : '' }}>
                 @error('administrator')
+                    <span style="color:red">{{ $message }}</span>;
+                @enderror
+            </div>
+            <div>
+                <label for="scales" class="col-sm-3 col-form-label">Administrateur</label>
+                <input type="checkbox" name="gtc" value="true" {{ $user->gtc === 1 ? 'checked' : '' }}>
+                @error('gtc')
                     <span style="color:red">{{ $message }}</span>;
                 @enderror
             </div>

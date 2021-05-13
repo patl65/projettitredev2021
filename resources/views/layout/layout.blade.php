@@ -111,7 +111,7 @@
     <div class="container-fluid mt-2 bg-success">
         @auth {{-- quand on est connecté --}}
             @cannot('admin') {{-- quand on n'est pas administrateur --}}
-                Je suis connecté(e) en tant que {{ auth()->user()->firstName }} {{ auth()->user()->lastName }}
+                Je suis connecté(e) en tant que {{ auth()->user()->userName }}
                 <a class="btn btn-outline-info btn-sm m-1" href="{{ route('logout') }}">Se déconnecter</a>
             @endcannot
         @endauth
