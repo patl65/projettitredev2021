@@ -78,20 +78,17 @@ class PostController extends Controller
         }
         $title = $request->input('title');
         $post = Post::create([
-
-
-            // 'category_id' => $request->input('category'),
-
+            //tests
             // 'category_id' => category()->name === "Expérience",
             // 'category_id' => $category->name === "Expérience",
             // 'category_id' => $request->name === "Expérience",
             // 'category_id' => $request->category === "Expérience",
             // 'category_id' => category->"Expérience",
-            'category_id' => $category->"Expérience",
+            // 'category_id' => $category->"Expérience",
 
-
-            // 'category_id' => 1,
-
+            // 'category_id' => $request->input('category'),
+            'category_id' => 1,
+            // 1 = Expérience
             'user_id' => auth()->user()->id,
             'title' => $title,
             'slug' => Str::slug($title),
@@ -107,28 +104,30 @@ class PostController extends Controller
 
     private function addImagesExperience(Request $request, Post $post)
     {
-        $fileName = uniqid() . '-' .  $picture->getClientOriginalName();
-        //pour mes essais
 
         if ($request->file('images')) {
             //revient à si le input n'est pas vide
             foreach ($request->file('images') as $file) {
                 if ($file) {
-                    // //$post->images()->detach($post->images);
-                    // //mis en comentaire car si non supprime les photos existantes por la nouvelle sélection dans la BDD
-                    // $image = Image::create([
-                    //     'name' => $file->getClientOriginalName()
-                    //     // ,'slug' => $file->getClientOriginalName()
-                    // ]);
-                    // // $file->storePubliclyAs('public/posts', $file->getClientOriginalName());
+                    //$post->images()->detach($post->images);
+                    //mis en comentaire car si non supprime les photos existantes por la nouvelle sélection dans la BDD
+                    $image = Image::create([
+                        'name' => $file->getClientOriginalName()
+                        // ,'slug' => $file->getClientOriginalName()
+                    ]);
                     // $file->storePubliclyAs('public/posts', $file->getClientOriginalName());
-                    // //ne modifie pas le nom du fichier
-                    // $post->images()->attach($image);
+                    $file->storePubliclyAs('public/posts', $file->getClientOriginalName());
+                    //ne modifie pas le nom du fichier
+                    $post->images()->attach($image);
 
 
 
 
                     // $picturename = uniqid('picture') . '-' .  $picture->getClientOriginalName();
+
+                    // $fileName = uniqid() . '-' .  $picture->getClientOriginalName();
+                    // //pour mes essais
+            
 
                     // $image = Image::create([
                     //     'name' => $fileName

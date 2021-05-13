@@ -9,14 +9,6 @@
     <form action="{{ route('blog.experience.store') }}" method="POST" enctype="multipart/form-data">
         {{-- enctype pour les fichiers photos --}}
         @csrf
-        {{-- <div>
-            <label for="category" class="col-form-label">Catégorie</label>
-            <select name="category" id="Sélectionner une catégorie">
-                @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                @endforeach
-            </select>
-        </div> --}}
         <div class="form-group  mt-2">
             <label for="title">Titre</label>
             <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">

@@ -29,14 +29,13 @@ class LoginController extends Controller
             //connection
             $email = $request->input('email');
             $password = $request->input('password');
-            // TODO: enlever User first quand ok
             $user = User::where('email', $email)->first();
             if ($user) {
                 if (Hash::check($password, $user->password)) { //(mot de passe formlaire, mot de passe haché)
                     auth()->login($user);
                     // auth()->user()->notify(new NewConnectionNotification); //envoit un mail à la connexion (Notification)
                     // return redirect()->route('dashboard');
-                    return redirect()->route('blog.createExperience');
+                    return redirect()->route('blog.experience.create');
 
                 } else {
                     return redirect()->route('login')->with('error', 'email et mot de passe ne correspondent pas');
