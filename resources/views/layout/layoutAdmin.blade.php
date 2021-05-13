@@ -57,12 +57,12 @@
             </div>
 
             {{-- si on n'est pas connecté --}}
-            @guest
-                <h2 class="mt-4">Pour accéder au Menu, vous devez vous connecter</h2>
-            @endguest
+            @cannot('admin') {{-- quand on est administrateur --}}
+                <h2 class="mt-4">Pour accéder au Menu, vous devez être administrateur</h2>
+            @endcannot
 
             {{-- quand on est connecté --}}
-            @auth
+            @can('admin') {{-- quand on est administrateur --}}
                 <nav class="navbar navbar-expand-lg navbar-light bg-dark w-100">
 
                     <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse"
@@ -100,25 +100,13 @@
                         </ul>
                     </div>
                 </nav>
-            @endauth
-
-
-
+                @endcan
         </div>
-
     </div>
-
-
-
-
-
-
 
     <div class="container-fluid">
         @yield('content')
     </div>
-
-
 
     <!-- Optional JavaScript -->
     <!-- Popper.js first, then CoreUI JS -->
