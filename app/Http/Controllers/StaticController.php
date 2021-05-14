@@ -41,4 +41,9 @@ class StaticController extends Controller
         return view('pages.mentionsLegales');
     }
 
+    public function gtc()
+    {
+        return view('pages.gtc');
+    }
+
 }

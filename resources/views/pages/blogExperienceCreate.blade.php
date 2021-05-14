@@ -1,5 +1,6 @@
 @extends('layout.layout')
 @section('content')
+@include('inc.flash')
 
     <div class="d-flex mt-2">
         <h3>Mon expérience avec Latu entreprise !</h3>

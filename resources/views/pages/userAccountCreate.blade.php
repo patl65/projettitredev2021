@@ -1,0 +1,122 @@
+@extends('layout.layout')
+@section('content')
+
+    <a href="{{ route('blog.index') }}"><button class="mb-2">Annuler - Retour Conseils de Pro & Actualités</button></a>
+
+    <div class="mb-2 bg-light px-2">
+        <h3>Créer mon compte utilisateur :</h3>
+
+        @include('inc.flash')
+    </div>
+
+    <div class="bg-light px-2">
+        <form action="{{ route('user.store') }}" method="POST">
+            @csrf
+            <div>
+                <label for="lastName" class="col-sm-3 col-form-label">Nom</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Nom" value="{{ old('lastName') }}"
+                    class="col-sm-3">
+                @error('lastName')
+                    <span style="color:red">{{ $message }}</span>
+                @enderror
+            </div>
+            <div>
+                <label for="firstName" class="col-sm-3 col-form-label">Prénom</label>
+                <input type="text" id="firstName" name="firstName" placeholder="Prénom" value="{{ old('firstName') }}"
+                    class="col-sm-3">
+                @error('firstName')
+                    <span style="color:red">{{ $message }}</span>
+                @enderror
+            </div>
+            <div>
+                <label for="phoneNumber" class="col-sm-3 col-form-label">Téléphone</label>
+                <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Téléphone"
+                    value="{{ old('phoneNumber') }}" class="col-sm-3">
+                @error('phoneNumber')
+                    <span style="color:red">{{ $message }}</span>
+                @enderror
+            </div>
+            <div>
+                <label for="address" class="col-sm-3 col-form-label">Adresse</label>
+                <input type="text" id="address" name="address" placeholder="Adresse" value="{{ old('address') }}"
+                    class="col-sm-3">
+                @error('address')
+                    <span style="color:red">{{ $message }}</span>
+                @enderror
+            </div>
+            <div>
+                <label for="postcode" class="col-sm-3 col-form-label">Code postal</label>
+                <input type="text" id="postcode" name="postcode" placeholder="Code postal" value="{{ old('postcode') }}"
+                    class="col-sm-3">
+                @error('postcode')
+                    <span style="color:red">{{ $message }}</span>
+                @enderror
+            </div>
+            <div>
+                <label for="city" class="col-sm-3 col-form-label">Ville</label>
+                <input type="text" id="city" name="city" placeholder="Ville" value="{{ old('city') }}" class="col-sm-3">
+                @error('city')
+                    <span style="color:red">{{ $message }}</span>
+                @enderror
+            </div>
+            <div>
+                <label for="country" class="col-sm-3 col-form-label">Pays</label>
+                <input type="text" id="country" name="country" placeholder="Pays" value="{{ old('country') }}"
+                    class="col-sm-3">
+                @error('country')
+                    <span style="color:red">{{ $message }}</span>
+                @enderror
+            </div>
+            <div>
+                <label for="gtc" class="col-sm-3 col-form-label">
+                    <a href="{{ route('gtc') }}"
+                        onclick="open('{{ route('gtc') }}', 'Popup', 'scrollbars=1,resizable=1,height=560,width=770'); return false;">Conditions
+                        Générales d'Utilisation</a>
+                </label>
+                <input type="checkbox" name="gtc" value="true" {{ old('gtc') ? 'checked' : '' }}> acceptées
+                @error('administrator')
+                    <span style="color:red">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="d-flex align-items-center justify-content-center">
+                <hr class="mx-0" style="width: 25rem;"> ***
+                <hr class="mx-0" style="width: 25rem;">
+            </div>
+            <div>
+                <label for="userName" class="col-sm-3 col-form-label">Nom d'utilisateur</label>
+                <input type="text" id="userName" name="userName" placeholder="Nom d'utilisateur"
+                    value="{{ old('userName') }}" class="col-sm-3">
+                @error('userName')
+                    <span style="color:red">{{ $message }}</span>
+                @enderror
+            </div>
+            <div>
+                <label for="email" class="col-sm-3 col-form-label">Email</label>
+                <input type="email" id="email" name="email" placeholder="Email" value="{{ old('email') }}"
+                    class="col-sm-3">
+                @error('email')
+                    <span style="color:red">{{ $message }}</span>
+                @enderror
+            </div>
+            <div>
+                <label for="password" class="col-sm-3 col-form-label">Mot de passe</label>
+                <input type="text" id="password" name="password" placeholder="Mot de passe" class="col-sm-3">
+                @error('password')
+                    <span style="color:red">{{ $message }}</span>
+                @enderror
+            </div>
+            <div>
+                <label for="confirm_password" class="col-sm-3 col-form-label">Confirmation du mot de passe</label>
+                <input type="text" id="confirm_password" name="confirm_password" placeholder="Confirmation du ot de passe"
+                    class="col-sm-3">
+                @error('confirm_password')
+                    <span style="color:red">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="mx-auto col-sm-3 col-form-label" style="width: 600px;">
+                <button type="submit" class="col-form-label">Créer</button>
+            </div>
+        </form>
+    </div>
+
+@endsection

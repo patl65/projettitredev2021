@@ -3,17 +3,18 @@
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\StaticController;
 use App\Http\Controllers\Admin\JobController;
+use App\Http\Controllers\Site\UserController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\UserAdminController;
+use App\Http\Controllers\Site\JobController as SiteJobController;
 use App\Http\Controllers\Site\PostController as SitePostController;
 use App\Http\Controllers\Site\CategoryController as SiteCategoryController;
-use App\Http\Controllers\Site\JobController as SiteJobController;
-use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,19 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::post('user/{user:id}/update', [UserAdminController::class, 'update'])->name('admin.user.update');
     //ordre des pages importants : mettre en dernier avec ID car si non elles vont toutes demander l'ID et au départ je n'en avais pas mis sur update email et password
 });
+
+//pour les utilisateurs non admin
+Route::group(['prefix' => 'user'], function () {
+    Route::get('create', [UserController::class, 'create'])->name('user.create');
+    Route::post('user', [UserController::class, 'store'])->name('user.store');
+    Route::get('{user:id}', [UserController::class, 'show'])->name('user.show');
+
+
+    Route::post('user/{user:id}/update-email', [UserController::class, 'updateEmail'])->name('user.update.email');
+    Route::post('user/{user:id}/update-password', [UserController::class, 'updatePassword'])->name('user.update.password');
+    Route::post('user/{user:id}/update', [UserController::class, 'update'])->name('user.update');
+});
+
 
 
 //pour le blog : pour les catégories

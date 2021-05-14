@@ -11,5 +11,6 @@ Route::get('/peinture', [StaticController::class, 'peinture'])->name('peinture')
 Route::get('/sols', [StaticController::class, 'sols'])->name('sols');
 Route::get('/isolation-thermique-exterieur', [StaticController::class, 'ite'])->name('ite');
 Route::get('/mentions-legales', [StaticController::class, 'mentionsLegales'])->name('mentionsLegales');
+Route::get('/cgu', [StaticController::class, 'gtc'])->name('gtc');
 
 

@@ -10,7 +10,7 @@
 <div>
 Coordonées :
 Email : {{ $user->email }}
-Téléphonr : {{ $user->phoneNumber }}
+Téléphone : {{ $user->phoneNumber }}
 Adresse :  {{ $user->address }} -  {{ $user->postcode }}  {{ $user->city }} -  {{ $user->country }}
 </div>
 <div>

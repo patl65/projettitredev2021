@@ -1,5 +1,6 @@
 @extends('layout.layout')
 @section('content')
+@include('inc.flash')
 
 
     <h1>Contact</h1>

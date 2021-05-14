@@ -36,7 +36,7 @@
         <div class="bg-light text-dark p-3" style="width: 300px">
             Si vous n'avez pas de compte :
             <label for="" class="col-sm-3 col-form-label"></label>
-            <a href="{{ route('admin.user.create') }}"><button class="">Créer un compte</button></a>
+            <a href="{{ route('user.create') }}"><button class="">Créer un compte</button></a>
 
         </div>
     </div>
