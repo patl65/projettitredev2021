@@ -199,4 +199,28 @@ class UserController extends Controller
         return redirect()->route('user.edit', $user->id)->with('success', "Votre nom d'utilisateur a été mis à jour");
     }
 
+    public function remenberPassword(Request $request)
+    {
+        TODO:
+
+        $inputs = $request->only([
+            'name', 'phone', 'email', 'adress', 'message'
+        ]);
+        Notification::route('mail', $inputs['email'])->notify(new RemenberPasswordNotification($inputs));
+        return redirect()->route('contact')->with('success', 'Message envoyé');
+    }
+
+    public function requestDestroyUserAccount(Request $request)
+    {
+        TODO:
+
+        $inputs = $request->only([
+            'name', 'phone', 'email', 'adress', 'message'
+        ]);
+        Notification::route('mail', $inputs['email'])->notify(new DestroyMyUserAccountNotification($inputs));
+        return redirect()->route('contact')->with('success', 'Message envoyé');
+    }
+
+
+
 }
