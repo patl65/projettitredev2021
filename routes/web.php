@@ -52,20 +52,26 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     //edit : route qui lance l'affichage pour l'update
     Route::post('user/{user:id}/update-email', [UserAdminController::class, 'updateEmail'])->name('admin.user.update.email');
     Route::post('user/{user:id}/update-password', [UserAdminController::class, 'updatePassword'])->name('admin.user.update.password');
+    Route::post('user/{user:id}/update-userName', [UserAdminController::class, 'updateUserName'])->name('admin.user.update.userName');
     Route::post('user/{user:id}/update', [UserAdminController::class, 'update'])->name('admin.user.update');
     //ordre des pages importants : mettre en dernier avec ID car si non elles vont toutes demander l'ID et au départ je n'en avais pas mis sur update email et password
 });
+
 
 //pour les utilisateurs non admin
 Route::group(['prefix' => 'user'], function () {
     Route::get('create', [UserController::class, 'create'])->name('user.create');
     Route::post('user', [UserController::class, 'store'])->name('user.store');
-    Route::get('{user:id}', [UserController::class, 'show'])->name('user.show');
+});
+Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
+    Route::get('show/{user:id}', [UserController::class, 'show'])->name('user.show');
+    Route::get('edit/{user:id}', [UserController::class, 'edit'])->name('user.edit');
+    //edit : route qui lance l'affichage pour l'update
+    Route::post('{user:id}/update-email', [UserController::class, 'updateEmail'])->name('user.update.email');
+    Route::post('{user:id}/update-password', [UserController::class, 'updatePassword'])->name('user.update.password');
+    Route::post('{user:id}/update-userName', [UserController::class, 'updateUserName'])->name('user.update.userName');
+    Route::post('{user:id}/updated', [UserController::class, 'update'])->name('user.update');
 
-
-    Route::post('user/{user:id}/update-email', [UserController::class, 'updateEmail'])->name('user.update.email');
-    Route::post('user/{user:id}/update-password', [UserController::class, 'updatePassword'])->name('user.update.password');
-    Route::post('user/{user:id}/update', [UserController::class, 'update'])->name('user.update');
 });
 
 

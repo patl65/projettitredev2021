@@ -6,7 +6,7 @@
 
 
     <div class="d-flex">
-        <h3>Modifier utilisateur dans Administrateurs :</h3>
+        <h3>Modifier utilisateur dans Administrateur :</h3>
         <div class="mx-auto col-form-label" style="width: 600px;">
             <a href="{{ route('admin.user') }}"><button class="col-form-label">Annuler / Quitter</button></a>
         </div>
@@ -31,14 +31,6 @@
                 @enderror
             </div>
             <div>
-                <label for="userName" class="col-sm-3 col-form-label">Nom d'utilisateur</label>
-                <input type="text" id="userName" name="userName" placeholder="Nom d'utilisateur"
-                    value="{{ $user->userName }}" class="col-sm-3">
-                @error('userName')
-                    <span style="color:red">{{ $message }}</span>
-                @enderror
-            </div>
-            <div>
                 <label for="phoneNumber" class="col-sm-3 col-form-label">Téléphone</label>
                 <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Téléphone"
                     value="{{ $user->phoneNumber }}" class="col-sm-3">
@@ -48,8 +40,8 @@
             </div>
             <div>
                 <label for="streetAddress" class="col-sm-3 col-form-label">Adresse</label>
-                <input type="text" id="streetAddress" name="streetAddress" placeholder="Adressse" value="{{ $user->streetAddress }}"
-                    class="col-sm-3">
+                <input type="text" id="streetAddress" name="streetAddress" placeholder="Adressse"
+                    value="{{ $user->streetAddress }}" class="col-sm-3">
                 @error('streetAddress')
                     <span style="color:red">{{ $message }}</span>
                 @enderror
@@ -64,8 +56,7 @@
             </div>
             <div>
                 <label for="city" class="col-sm-3 col-form-label">Ville</label>
-                <input type="text" id="city" name="city" placeholder="Ville" value="{{ $user->city }}"
-                    class="col-sm-3">
+                <input type="text" id="city" name="city" placeholder="Ville" value="{{ $user->city }}" class="col-sm-3">
                 @error('city')
                     <span style="color:red">{{ $message }}</span>
                 @enderror
@@ -79,7 +70,7 @@
                 @enderror
             </div>
             <div>
-                <label for="scales" class="col-sm-3 col-form-label">Administrateur</label>
+                <label for="administrator" class="col-sm-3 col-form-label">Administrateur</label>
                 <input type="checkbox" name="administrator" value="true"
                     {{ $user->administrator === 1 ? 'checked' : '' }}>
                 @error('administrator')
@@ -87,10 +78,29 @@
                 @enderror
             </div>
             <div>
-                <label for="scales" class="col-sm-3 col-form-label">CGU acceptées</label>
+                <label for="gtc" class="col-sm-3 col-form-label">CGU acceptées</label>
                 <input type="checkbox" name="gtc" value="true" {{ $user->gtc === 1 ? 'checked' : '' }}>
                 @error('gtc')
                     <span style="color:red">{{ $message }}</span>;
+                @enderror
+            </div>
+            <div class="mx-auto col-sm-6 col-form-label" style="width: 600px;">
+                <button type="submit" class="col-form-label">Mettre à jour</button>
+            </div>
+        </form>
+    </div>
+
+
+    <div class='mt-5'>
+        <h3>Modification du nom d'utilisateur :</h3>
+        <form action="{{ route('admin.user.update.userName', $user->id) }}" method="POST">
+            @csrf
+            <div>
+                <label for="userName" class="col-sm-3 col-form-label">Nom d'utilisateur</label>
+                <input type="text" id="userName" name="userName" placeholder="Nom d'utilisateur"
+                    value="{{ $user->userName }}" class="col-sm-3">
+                @error('userName')
+                    <span style="color:red">{{ $message }}</span>
                 @enderror
             </div>
             <div class="mx-auto col-sm-6 col-form-label" style="width: 600px;">
@@ -105,10 +115,10 @@
         <form action="{{ route('admin.user.update.email', $user->id) }}" method="POST">
             @csrf
             <div>
-                <label for="firstName" class="col-sm-3 col-form-label">Email</label>
-                <input type="text" id="email" name="email" placeholder="Email" value="{{ $user->email }}"
+                <label for="email" class="col-sm-3 col-form-label">Email</label>
+                <input type="email" id="email" name="email" placeholder="Email" value="{{ $user->email }}"
                     class="col-sm-3">
-                @error('firstName')
+                @error('email')
                     <span style="color:red">{{ $message }}</span>
                 @enderror
             </div>

@@ -129,7 +129,6 @@ class UserAdminController extends Controller
         $validator = Validator::make($request->all(), [
             'firstName' => 'required|string',
             'lastName' => 'required|string',
-            'userName' => 'required|string|unique:users,userName',
             'phoneNumber' => 'required|string',
             'streetAddress' => 'required|string',
             'postcode' => 'required|string',
@@ -138,31 +137,32 @@ class UserAdminController extends Controller
             'administrator' => '',
             'gtc' => '',
         ]);
+        
         if ($validator->fails()) {
             return redirect()->route('admin.user.edit', $user->id)->withErrors($validator)->withInput();
-
         }
+
         $firstName = $request->input('firstName');
         $lastName = $request->input('lastName');
-        $userName = $request->input('userName');
         $phoneNumber = $request->input('phoneNumber');
         $streetAddress = $request->input('streetAddress');
         $postcode = $request->input('postcode');
         $city = $request->input('city');
         $country = $request->input('country');
         $administrator = (bool) $request->input('administrator');
+        $gtc = (bool) $request->input('gtc');
         //(bool) car la chekbox renvoit un string true ou false et donc on lui que c'est un booléen
 
         $user->update([
             'firstName' => $firstName,
             'lastName' => $lastName,
-            'userName' => $userName,
             'phoneNumber' => $phoneNumber,
             'streetAddress' => $streetAddress,
             'postcode' => $postcode,
             'city' => $city,
             'country' => $country,
             'administrator' => $administrator,
+            'gtc' => $gtc,
         ]);
         return redirect()->route('admin.user.edit', $user->id)->with('success', "$user->lastName $user->firstName a été mis(e) à jour");
     }
@@ -196,6 +196,22 @@ class UserAdminController extends Controller
             'password' => Hash::make($request->input('password')),
         ]);
         return redirect()->route('admin.user.edit', $user->id)->with('success', "Mot de passe mis à jour pour $user->lastName $user->firstName");
+    }
+
+
+    public function updateUserName(Request $request, User $user)
+    {
+        $validator = Validator::make($request->all(), [
+            'userName' => 'required|string|unique:users,userName',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->route('admin.user.edit', $user->id)->withErrors($validator)->withInput();
+        }
+        $userName = $request->input('userName');
+        $user->update([
+            'userName' => $userName,
+        ]);
+        return redirect()->route('admin.user.edit', $user->id)->with('success', "Nom d'utilisateur mis à jour pour $user->lastName $user->firstName");
     }
 
 

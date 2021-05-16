@@ -20,22 +20,22 @@
             <b>Coordonées :</b>
             <ul>
                 <li><b>Email :</b> {{ $user->email }}
-                </li>  
+                </li>
                 <li><b>Téléphone :</b> {{ $user->phoneNumber }}
-                </li>  
+                </li>
                 <li><b>Adresse :</b> {{ $user->streetAddress }}
-                </li> 
+                </li>
                 <li><b>Ville :</b> {{ $user->postcode }} {{ $user->city }}
-                </li> 
+                </li>
                 <li><b>Pays :</b> {{ $user->country }}
-                </li>  
+                </li>
         </div>
         <div class="mt-2">
             <b>Conditions Générales d'Utilisation acceptées :</b> {{ $user->gtc ? 'Oui' : 'Non' }}
         </div>
     </div>
     <div class="mt-2">
-        <a href="user.update'"><button class="mb-2">Modifier mon compte</button></a>
+        <a href="{{ route('user.update', auth()->user()->id) }}"><button class="mb-2">Modifier mon compte</button></a>
     </div>
 
 @endsection

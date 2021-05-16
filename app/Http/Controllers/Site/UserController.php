@@ -11,13 +11,6 @@ use Illuminate\Support\Facades\Validator;
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -49,7 +42,7 @@ class UserController extends Controller
             'city' => 'required|string',
             'country' => 'required|string',
             'gtc' => 'required|in:true',
-            //checkbox obligatoirement cochée
+            //checkbox obligatoirement cochée pour gtc
         ]);
         if ($validator->fails()) {
             return redirect()->route('user.create')->with('error', "Vous devez accepter les conditions générales d'utilisation")->withErrors($validator)->withInput();
@@ -86,7 +79,8 @@ class UserController extends Controller
         ]);
         return redirect()->route('blog.experience.create')->with('success', "Bienvenue !");
     }
-    /**
+
+        /**
      * Display the specified resource.
      *
      * @param  \App\Models\User  $user
@@ -105,7 +99,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('pages.admin.updateUserAdmin', ['user' => $user]);
+        return view('pages.userAccountUpdate', ['user' => $user]);
     }
 
     /**
@@ -120,41 +114,42 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
             'firstName' => 'required|string',
             'lastName' => 'required|string',
-            'userName' => 'required|string|unique:users,userName',
             'phoneNumber' => 'required|string',
             'streetAddress' => 'required|string',
             'postcode' => 'required|string',
             'city' => 'required|string',
             'country' => 'required|string',
-            'administrator' => '',
-            'gtc' => '',
+            // 'administrator' => '',
+            // 'gtc' => '',
         ]);
+
         if ($validator->fails()) {
-            return redirect()->route('admin.user.edit', $user->id)->withErrors($validator)->withInput();
+            return redirect()->route('user.edit', $user->id)->withErrors($validator)->withInput();
+
         }
+
         $firstName = $request->input('firstName');
         $lastName = $request->input('lastName');
-        $userName = $request->input('userName');
         $phoneNumber = $request->input('phoneNumber');
         $streetAddress = $request->input('streetAddress');
         $postcode = $request->input('postcode');
         $city = $request->input('city');
         $country = $request->input('country');
-        $administrator = (bool) $request->input('administrator');
-        //(bool) car la chekbox renvoit un string true ou false et donc on lui que c'est un booléen
+        // $administrator = (bool) $request->input('administrator');
+        // //(bool) car la chekbox renvoit un string true ou false et donc on lui que c'est un booléen
 
         $user->update([
             'firstName' => $firstName,
             'lastName' => $lastName,
-            'userName' => $userName,
             'phoneNumber' => $phoneNumber,
             'streetAddress' => $streetAddress,
             'postcode' => $postcode,
             'city' => $city,
             'country' => $country,
-            'administrator' => $administrator,
+            // 'administrator' => 0,
+            // 'gtc' => 1,
         ]);
-        return redirect()->route('admin.user.edit', $user->id)->with('success', "$user->lastName $user->firstName a été mis(e) à jour");
+        return redirect()->route('user.edit', $user->id)->with('success', "$user->lastName $user->firstName a été mis(e) à jour");
     }
 
 
@@ -164,12 +159,12 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email',
         ]);
         if ($validator->fails()) {
-            return redirect()->route('admin.user.edit', $user->id)->withErrors($validator)->withInput();
+            return redirect()->route('user.edit', $user->id)->withErrors($validator)->withInput();
         }
         $user->update([
             'email' => $request->input('email'),
         ]);
-        return redirect()->route('admin.user.edit', $user->id)->with('success', "Email mis à jour pour $user->lastName $user->firstName");
+        return redirect()->route('user.edit', $user->id)->with('success', "Email mis à jour pour $user->lastName $user->firstName");
     }
 
 
@@ -180,24 +175,28 @@ class UserController extends Controller
             'confirm_password' => 'required|same:password'
         ]);
         if ($validator->fails()) {
-            return redirect()->route('admin.user.edit', $user->id)->withErrors($validator)->withInput();
+            return redirect()->route('user.edit', $user->id)->withErrors($validator)->withInput();
         }
         $user->update([
             'password' => Hash::make($request->input('password')),
         ]);
-        return redirect()->route('admin.user.edit', $user->id)->with('success', "Mot de passe mis à jour pour $user->lastName $user->firstName");
+        return redirect()->route('user.edit', $user->id)->with('success', "Mot de passe mis à jour pour $user->lastName $user->firstName");
     }
 
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(User $user)
+    public function updateUserName(Request $request, User $user)
     {
-        $user->delete();
-        return redirect()->route('admin.user')->with('succes', "L'utilisateur $user->lastName $user->firstName a été supprimé");
+        $validator = Validator::make($request->all(), [
+            'userName' => 'required|string|unique:users,userName',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->route('user.edit', $user->id)->withErrors($validator)->withInput();
+        }
+        $userName = $request->input('userName');
+        $user->update([
+            'userName' => $userName,
+        ]);
+        return redirect()->route('user.edit', $user->id)->with('success', "Nom d'utilisateur mis à jour pour $user->lastName $user->firstName");
     }
+
 }
