@@ -57,9 +57,9 @@
         @enderror
         </div>
         <div>
-            <label for="address" class="col-sm-3 col-form-label">Adresse</label>
-            <input type="text" id="address" name="address" placeholder="Adresse" value="{{ old('address') }}" class="col-sm-3">
-            @error('address')
+            <label for="streetAddress" class="col-sm-3 col-form-label">Adresse</label>
+            <input type="text" id="streetAddress" name="streetAddress" placeholder="Adresse" value="{{ old('streetAddress') }}" class="col-sm-3">
+            @error('streetAddress')
             <span style="color:red">{{ $message }}</span>
         @enderror
         </div>

@@ -11,7 +11,7 @@
 Coordonées :
 Email : {{ $user->email }}
 Téléphone : {{ $user->phoneNumber }}
-Adresse :  {{ $user->address }} -  {{ $user->postcode }}  {{ $user->city }} -  {{ $user->country }}
+Adresse :  {{ $user->streetAddress }} -  {{ $user->postcode }}  {{ $user->city }} -  {{ $user->country }}
 </div>
 <div>
 Divers :

@@ -35,7 +35,7 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => Hash::make('password'),
             'phoneNumber' => $this->faker->phoneNumber(),
-            'address' => $this->faker->address(),
+            'streetAddress' => $this->faker->streetAddress(),
             'postcode' => $this->faker->postcode(),
             'city' => $this->faker->city(),
             'country' => $this->faker->country(),

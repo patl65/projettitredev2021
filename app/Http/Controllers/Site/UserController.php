@@ -44,7 +44,7 @@ class UserController extends Controller
             'password' => 'required|string',
             'confirm_password' => 'required|same:password',
             'phoneNumber' => 'required|string',
-            'address' => 'required|string',
+            'streetAddress' => 'required|string',
             'postcode' => 'required|string',
             'city' => 'required|string',
             'country' => 'required|string',
@@ -61,7 +61,7 @@ class UserController extends Controller
         $email = $request->input('email');
         $password = Hash::make($request->input('password'));
         $phoneNumber = $request->input('phoneNumber');
-        $address = $request->input('address');
+        $streetAddress = $request->input('streetAddress');
         $postcode = $request->input('postcode');
         $city = $request->input('city');
         $country = $request->input('country');
@@ -75,7 +75,7 @@ class UserController extends Controller
             'email' => $email,
             'password' => $password,
             'phoneNumber' => $phoneNumber,
-            'address' => $address,
+            'streetAddress' => $streetAddress,
             'postcode' => $postcode,
             'city' => $city,
             'country' => $country,
@@ -122,7 +122,7 @@ class UserController extends Controller
             'lastName' => 'required|string',
             'userName' => 'required|string|unique:users,userName',
             'phoneNumber' => 'required|string',
-            'address' => 'required|string',
+            'streetAddress' => 'required|string',
             'postcode' => 'required|string',
             'city' => 'required|string',
             'country' => 'required|string',
@@ -136,7 +136,7 @@ class UserController extends Controller
         $lastName = $request->input('lastName');
         $userName = $request->input('userName');
         $phoneNumber = $request->input('phoneNumber');
-        $address = $request->input('address');
+        $streetAddress = $request->input('streetAddress');
         $postcode = $request->input('postcode');
         $city = $request->input('city');
         $country = $request->input('country');
@@ -148,7 +148,7 @@ class UserController extends Controller
             'lastName' => $lastName,
             'userName' => $userName,
             'phoneNumber' => $phoneNumber,
-            'address' => $address,
+            'streetAddress' => $streetAddress,
             'postcode' => $postcode,
             'city' => $city,
             'country' => $country,

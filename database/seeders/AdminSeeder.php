@@ -24,7 +24,7 @@ class AdminSeeder extends Seeder
             'password' => Hash::make(config('settings.credentials.password')),
             'email_verified_at' => now(),
             'phoneNumber' => config('settings.credentials.phoneNumber'),
-            'address' => config('settings.credentials.address'),
+            'streetAddress' => config('settings.credentials.streetAddress'),
             'postcode' => config('settings.credentials.postcode'),
             'city' => config('settings.credentials.city'),
             'country' => config('settings.credentials.country'),

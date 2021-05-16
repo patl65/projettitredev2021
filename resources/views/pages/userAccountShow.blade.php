@@ -23,7 +23,7 @@
                 </li>  
                 <li><b>Téléphone :</b> {{ $user->phoneNumber }}
                 </li>  
-                <li><b>Adresse :</b> {{ $user->address }}
+                <li><b>Adresse :</b> {{ $user->streetAddress }}
                 </li> 
                 <li><b>Ville :</b> {{ $user->postcode }} {{ $user->city }}
                 </li> 
