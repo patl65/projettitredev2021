@@ -1,8 +1,10 @@
 @extends('layout.layout')
 @section('content')
 
-    <a href="{{ route('blog.index') }}"><button class="mb-2">Annuler - Retour Conseils de Pro & Actualités</button></a>
-
+    <div class="mt-2">
+        <a href="{{ route('blog.index') }}"><button class="mb-2">Annuler - Retour Conseils de Pro &
+                Actualités</button></a>
+    </div>
     <div class="mb-2 bg-light px-2">
         <h3>Modifier mon compte utilisateur :</h3>
     </div>
@@ -48,15 +50,16 @@
                 </div>
                 <div>
                     <label for="postcode" class="col-sm-3 col-form-label">Code postal</label>
-                    <input type="text" id="postcode" name="postcode" placeholder="Code postal" value="{{ $user->postcode }}"
-                        class="col-sm-3">
+                    <input type="text" id="postcode" name="postcode" placeholder="Code postal"
+                        value="{{ $user->postcode }}" class="col-sm-3">
                     @error('postcode')
                         <span style="color:red">{{ $message }}</span>
                     @enderror
                 </div>
                 <div>
                     <label for="city" class="col-sm-3 col-form-label">Ville</label>
-                    <input type="text" id="city" name="city" placeholder="Ville" value="{{ $user->city }}" class="col-sm-3">
+                    <input type="text" id="city" name="city" placeholder="Ville" value="{{ $user->city }}"
+                        class="col-sm-3">
                     @error('city')
                         <span style="color:red">{{ $message }}</span>
                     @enderror
@@ -74,10 +77,10 @@
                 </div>
             </form>
         </div>
-    
-    
+
+
         <div class='mt-5'>
-            <h3>Modification du nom d'utilisateur :</h3>
+            <h3>Modifier mon nom d'utilisatrice ou d'utilisateur :</h3>
             <form action="{{ route('user.update.userName', $user->id) }}" method="POST">
                 @csrf
                 <div>
@@ -93,10 +96,10 @@
                 </div>
             </form>
         </div>
-    
-    
+
+
         <div class='mt-5'>
-            <h3>Modification de l'email :</h3>
+            <h3>Modifier mon email :</h3>
             <form action="{{ route('user.update.email', $user->id) }}" method="POST">
                 @csrf
                 <div>
@@ -112,10 +115,10 @@
                 </div>
             </form>
         </div>
-    
-    
+
+
         <div class='mt-5'>
-            <h3>Modification du mot de passe :</h3>
+            <h3>Modifier mon mot de passe :</h3>
             <form action="{{ route('user.update.password', $user->id) }}" method="POST">
                 @csrf
                 <div>
@@ -138,9 +141,11 @@
                 </div>
             </form>
         </div>
-    
-        <div>
-            <a href=""><button class="mb-2">Demander la suppression du compte utilisareur</button></a>
 
+
+        <div class='mt-5'>
+            <h3>Je souhaite supprimer mon compte :</h3>
+            <a href=""><button class="mb-2">Demander la suppression de mon compte utilisareur</button></a>
         </div>
+
     @endsection

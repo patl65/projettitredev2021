@@ -35,7 +35,7 @@
         </div>
     </div>
     <div class="mt-2">
-        <a href="{{ route('user.update', auth()->user()->id) }}"><button class="mb-2">Modifier mon compte</button></a>
+        <a href="{{ route('user.edit', auth()->user()->id) }}"><button class="mb-2">Modifier mon compte</button></a>
     </div>
 
 @endsection

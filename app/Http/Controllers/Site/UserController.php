@@ -149,7 +149,7 @@ class UserController extends Controller
             // 'administrator' => 0,
             // 'gtc' => 1,
         ]);
-        return redirect()->route('user.edit', $user->id)->with('success', "$user->lastName $user->firstName a été mis(e) à jour");
+        return redirect()->route('user.edit', $user->id)->with('success', "Vos informations ont été mise à jour");
     }
 
 
@@ -164,7 +164,7 @@ class UserController extends Controller
         $user->update([
             'email' => $request->input('email'),
         ]);
-        return redirect()->route('user.edit', $user->id)->with('success', "Email mis à jour pour $user->lastName $user->firstName");
+        return redirect()->route('user.edit', $user->id)->with('success', "Votre email a été mise à jour");
     }
 
 
@@ -180,7 +180,7 @@ class UserController extends Controller
         $user->update([
             'password' => Hash::make($request->input('password')),
         ]);
-        return redirect()->route('user.edit', $user->id)->with('success', "Mot de passe mis à jour pour $user->lastName $user->firstName");
+        return redirect()->route('user.edit', $user->id)->with('success', "Votre mot de passe a été mise à jour");
     }
 
 
@@ -196,7 +196,7 @@ class UserController extends Controller
         $user->update([
             'userName' => $userName,
         ]);
-        return redirect()->route('user.edit', $user->id)->with('success', "Nom d'utilisateur mis à jour pour $user->lastName $user->firstName");
+        return redirect()->route('user.edit', $user->id)->with('success', "Votre nom d'utilisateur a été mis à jour");
     }
 
 }
