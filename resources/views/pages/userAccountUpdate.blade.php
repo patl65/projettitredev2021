@@ -122,14 +122,14 @@
             <form action="{{ route('user.update.password', $user->id) }}" method="POST">
                 @csrf
                 <div>
-                    <label for="password" class="col-sm-3 col-form-label">Nouveau Mot de passe</label>
+                    <label for="password" class="col-sm-3 col-form-label">Nouveau mot de passe</label>
                     <input type="password" id="password" name="password" placeholder="password" class="col-sm-3">
                     @error('password')
                         <span style="color: red">{{ $message }}</span>
                     @enderror
                 </div>
                 <div>
-                    <label for="confirm_password" class="col-sm-3 col-form-label">Confirmation nouveau Mot de passe</label>
+                    <label for="confirm_password" class="col-sm-3 col-form-label">Confirmation nouveau mot de passe</label>
                     <input type="password" id="confirm_password" name="confirm_password" placeholder="password"
                         class="col-sm-3">
                     @error('confirm_password')
