@@ -87,7 +87,7 @@
                 @enderror
             </div>
             <div>
-                <label for="scales" class="col-sm-3 col-form-label">Administrateur</label>
+                <label for="scales" class="col-sm-3 col-form-label">CGU acceptées</label>
                 <input type="checkbox" name="gtc" value="true" {{ $user->gtc === 1 ? 'checked' : '' }}>
                 @error('gtc')
                     <span style="color:red">{{ $message }}</span>;
