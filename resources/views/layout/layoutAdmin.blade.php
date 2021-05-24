@@ -44,7 +44,7 @@
         <div class="w-100">
 
             <h2>Administration du site</h2>
-            <h2>Projet Titre Développeuse web</h2>
+            <h2>Projet Titre Développeuse web et web mobile</h2>
             <h2>Patricia Layerle</h2>
 
             <div class="mb-2">
