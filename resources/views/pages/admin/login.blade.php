@@ -27,10 +27,10 @@
             </form>
             <div class="mt-3">
                 <i> Mot de passe oublié ?</i>
-            <button type="submit">Demander son mot de passe</button>
+                <button type="submit">Réinitialiser son mot de passe</button>
+            </div>
         </div>
     </div>
-</div>
 
     <div class="mt-2">
         <div class="bg-light text-dark p-3" style="width: 300px">
