@@ -109,33 +109,13 @@ class PostController extends Controller
             //revient à si le input n'est pas vide
             foreach ($request->file('images') as $file) {
                 if ($file) {
-                    //$post->images()->detach($post->images);
-                    //mis en comentaire car si non supprime les photos existantes por la nouvelle sélection dans la BDD
+                    $fileName = 'exp-' . uniqid('picture') . $file->extension();
+                    // les noms des fichiers photos = "exp-"+nom unique+l'extension du fichier dorigine
                     $image = Image::create([
-                        'name' => $file->getClientOriginalName()
-                        // ,'slug' => $file->getClientOriginalName()
+                        'name' => $fileName
                     ]);
-                    // $file->storePubliclyAs('public/posts', $file->getClientOriginalName());
-                    $file->storePubliclyAs('public/posts', $file->getClientOriginalName());
-                    //ne modifie pas le nom du fichier
+                    $file->storePubliclyAs('public/posts',  $fileName);
                     $post->images()->attach($image);
-
-
-
-
-                    // $picturename = uniqid('picture') . '-' .  $picture->getClientOriginalName();
-
-                    // $fileName = uniqid() . '-' .  $picture->getClientOriginalName();
-                    // //pour mes essais
-            
-
-                    // $image = Image::create([
-                    //     'name' => $fileName
-                    //     // ,'slug' => $file->getClientOriginalName()
-                    // ]);
-                    // // $file->storePubliclyAs('public/posts', $file->getClientOriginalName());
-                    // $file->storePubliclyAs('public/posts', $fileName);
-                    // $post->images()->attach($image);
                 }
             }
         }
