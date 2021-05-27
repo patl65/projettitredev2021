@@ -136,9 +136,7 @@
 
     <footer class="footer align-items-center text-center my-3 pt-3 text-light">
         {{-- <div class="h-100 align-items-center"> --}}
-        <p style="color:rgb(241, 208, 20)"><i>@PatriciaLayerle - Titre développeuse web et web mobile</i></p>
-        <p><a href="{{ route('mentionsLegales') }}">Mentions légales</a>
-            - <b>Ce site n'utilise pas les cookies</b></p>
+        <p style="color:rgb(175, 23, 130)"><b><i>@PatriciaLayerle - Titre développeuse web et web mobile</i></b> - <a href="{{ route('mentionsLegales') }}">Mentions légales</a></p>
         {{-- </div> --}}
     </footer>
 </body>

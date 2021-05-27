@@ -77,7 +77,7 @@ class UserController extends Controller
             // 'remember_token',
             // 'email_verified_at' => 'datetime',
         ]);
-        return redirect()->route('blog.experience.create')->with('success', "Bienvenue !");
+        return redirect()->route('login')->with('success', "Bienvenue ! Votre compte est créé. Vous pouvez vous connecter");
     }
 
         /**
