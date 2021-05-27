@@ -169,7 +169,8 @@ if (app()->environment('install')) {
         Artisan::call('migrate:fresh', [
             '--seed' => true
         ]);
-
+        //pour le stockage des photos
+        File::deleteDirectory(storage_path('app/public/tondossier'));
         return response()->json([
             'status' => 'ok'
         ]);
