@@ -16,4 +16,12 @@
             </div>
         </div>
     </div>
+    <div class="d-flex justify-content-center mt-2">
+        <div>
+            <img class="logo"
+                src={{ asset('/images/consolaAdmin/VictoireTitre.jpg') }} alt="Titre validé !!!" class="img-fluid mx-2"
+                width="auto" height="auto">
+        </div>
+    </div>
+
 @endsection
