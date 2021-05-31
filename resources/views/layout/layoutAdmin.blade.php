@@ -34,7 +34,7 @@
 
 <body class="antialiased" data-spy="scroll" data-target="#navbar" data-offset="75">
 
-    <div class="sticky-top d-flex mb-5">
+    <div class="sticky-top d-flex mb-4">
 
         <img class="logo me-2" src={{ asset('/images/layout/LOGO_LATU.jpg') }} alt="Latu entreprise"
             class="img-fluid mx-2" width="150" height="150">

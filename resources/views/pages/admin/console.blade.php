@@ -1,7 +1,7 @@
 {{-- @extends('layout.layoutAdmin') --}}
 @extends('layout.layoutAdmin')
 @section('content')
-    <div class="d-flex justify-content-center mt-5">
+    <div class="d-flex justify-content-center">
         <div class="card bg-secondary text-primary border-primary rounded-pill shadow-lg p-2">
             <div class="card-body">
                 <center><i>
