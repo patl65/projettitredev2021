@@ -144,7 +144,7 @@
 
 
         <div class='mt-5'>
-            <h3>Je souhaite supprimer mon compte :</h3>
+            <b>Je souhaite supprimer mon compte :</b>
             <a href=""><button class="mb-2">Demander la suppression de mon compte utilisareur</button></a>
         </div>
 
