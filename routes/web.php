@@ -27,8 +27,6 @@ use App\Http\Controllers\Site\CategoryController as SiteCategoryController;
 |
 */
 
-
-
 Route::get('login', [LoginController::class, 'index'])->middleware('guest')->name('login');
 //>middleware('guest') : pour détecter si l'user est déjà connecté
 Route::post('login', [LoginController::class, 'login'])->name('auth.login');
@@ -57,7 +55,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     //ordre des pages importants : mettre en dernier avec ID car si non elles vont toutes demander l'ID et au départ je n'en avais pas mis sur update email et password
 });
 
-
 //pour les utilisateurs non admin
 Route::group(['prefix' => 'user'], function () {
     Route::get('create', [UserController::class, 'create'])->name('user.create');
@@ -71,10 +68,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
     Route::post('{user:id}/update-password', [UserController::class, 'updatePassword'])->name('user.update.password');
     Route::post('{user:id}/update-userName', [UserController::class, 'updateUserName'])->name('user.update.userName');
     Route::post('{user:id}/updated', [UserController::class, 'update'])->name('user.update');
-
 });
-
-
 
 //pour le blog : pour les catégories
 Route::group(['prefix' => 'admin/category', 'middleware' => 'admin'], function () {
@@ -109,7 +103,6 @@ Route::group(['prefix' => 'admin/post', 'middleware' => 'admin'], function () {
     //faire attention aux URL : que celà ne revienne pas au même {post:slug}/delete/{image} = {post:slug}/delete/{video}
 });
 
-
 //pour le blog : pour les pages visibles
 Route::group(['prefix' => 'blog'], function () {
     Route::get('', [SitePostController::class, 'indexBlog'])->name('blog.index');
@@ -122,14 +115,9 @@ Route::group(['prefix' => 'blog'], function () {
     Route::get('{category:slug}', [SiteCategoryController::class, 'showBlogByCategory'])->name('blog.category.show');
 });
 
-
-
-
-
 //pour la page contact avec l'envoit du mail
 Route::get('/contact', [StaticController::class, 'contact'])->name('contact');
 Route::post('/contact/send', [ContactController::class, 'contact'])->name('contact.send');
-
 
 //pour les jobs
 Route::group(['prefix' => 'admin/job', 'middleware' => 'admin'], function () {
@@ -149,7 +137,6 @@ Route::group(['prefix' => 'offres-emploi'], function () {
     //pour la barre de recherche
     Route::get('{post:slug}', [SiteJobController::class, 'showJob'])->name('jobs.post.show');
 });
-
 
 //pour la mise en hébergement : la récup de la bdd, son initialisation et initialisation des clées at autres
 if (app()->environment('install')) {
@@ -185,13 +172,6 @@ if (app()->environment('install')) {
         Artisan::call('clear-compiled');
     });
 }
-
-
-
-
-
-
-
 
 //Pour exemple de traiements avec Post
 //ex pour afficher en Json Post
