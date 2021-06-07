@@ -17,7 +17,7 @@ class Admin
     public function handle(Request $request, Closure $next)
     {
         // if(!auth()->user()->administrator === true){
-        //code corigé sur recommandation d'Alexandre
+        //code corrigé sur recommandation d'Alexandre : code popre
         if (!auth()->user()->administrator) {
             return redirect('/profile', 302)->with('error', 'Vous devez être administrateur pour accéder à cette page');
         }
