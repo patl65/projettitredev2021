@@ -52,12 +52,14 @@ class User extends Authenticatable
     ];
 
     //Pour clé étrangère dans Post
+    //for foreign key in Post
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
     }
 
     //Pour clé étrangère dans Job
+    //for foreign key in Job
     public function jobs(): HasMany
     {
         return $this->hasMany(Job::class);
