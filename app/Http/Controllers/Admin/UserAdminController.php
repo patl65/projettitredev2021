@@ -50,7 +50,7 @@ class UserAdminController extends Controller
             'userName' => 'required|string|unique:users,userName',
             'email' => 'required|email|unique:users,email',
             //unique va vérififier dans la bdd s'il y a déjà un mail identique qui existe
-            'password' => 'required|string',
+            'password' => 'required|string|min:8',
             'confirm_password' => 'required|same:password',
             'phoneNumber' => 'required|string',
             'streetAddress' => 'required|string',
@@ -186,7 +186,7 @@ class UserAdminController extends Controller
     public function updatePassword(Request $request, User $user)
     {
         $validator = Validator::make($request->all(), [
-            'password' => 'required|string',
+            'password' => 'required|string|min:8',
             'confirm_password' => 'required|same:password'
         ]);
         if ($validator->fails()) {
