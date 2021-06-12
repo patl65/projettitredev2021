@@ -1,15 +1,9 @@
 @extends('layout.layout')
 @section('content')
 
-
 <div class="d-flex justify-content-center mt-5 bg-light text-dark">
 @include('inc.flash')
 </div>
-
-
-
-
-
 
     <div class="d-flex justify-content-center mt-5">
         <div class="mt-5">
@@ -49,6 +43,5 @@
             </div>
         </div>
     </div>
-
 
 @endsection
