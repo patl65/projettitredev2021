@@ -163,6 +163,7 @@ if (app()->environment('install')) {
         ]);
     });
 
+    //si besoin pour reset lancement sur hebergeur
     Route::get('/clear', function () {
         Artisan::call('cache:clear');
         Artisan::call('view:clear');
