@@ -23,7 +23,6 @@
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
     <script src="{{ asset('js/overlay.js') }}" defer></script>
-
 </head>
 
 
@@ -34,7 +33,6 @@
         <a class="h-100 bg-light" href="{{ route('home') }}"><img class="logo"
                 src={{ asset('/images/layout/LOGO_LATU.jpg') }} alt="Latu entreprise" class="img-fluid mx-2"
                 width="130" height="auto"></a>
-
 
         <div class="w-100">
 
@@ -55,7 +53,6 @@
                             src={{ asset('images/layout/youtube.png') }} alt="" height="35" height="auto"></a>
                 </div>
             </div>
-
 
             <nav class="navbar navbar-expand-lg navbar-light w-100">
 
@@ -102,11 +99,7 @@
                     </ul>
                 </div>
             </nav>
-
         </div>
-
-
-
     </header>
     <div class="container-fluid mt-2 bg-success">
         @auth {{-- quand on est connecté --}}
@@ -123,16 +116,10 @@
 
         @endcan
     </div>
-
-
-
-
-
+    
     <main class="container-fluid">
         @yield('content')
     </main>
-
-
 
     <footer class="footer align-items-center text-center my-3 pt-3 text-light">
         {{-- <div class="h-100 align-items-center"> --}}
