@@ -3,12 +3,6 @@
 
     <h1>Conseils de Pro & Actualités</h1>
 
-    {{-- <a href=""><button type=" button" class="btn btn-warning  text-primary me-2 mb-2"><img
-                src={{ asset('/images/layout/parler.png') }} alt="" width="10%" height="auto"><b>Partagez ici votre
-                expérience Latu</b></button></a> --}}
-
-
-
     <a href="{{ route('blog.experience.create') }}"><button type=" button"
             class="btn btn-success text-info btn-experience me-2 mb-2"><img src={{ asset('/images/layout/parler.png') }}
                 alt="" width="10%" height="auto"><b> Partagez ici votre
@@ -18,7 +12,7 @@
     @include('inc.search')
     <div class="container d-flex align-items-center flex-column bg-light mb-2" style="width: 50rem;">
         @include('inc.flash')
-     </div>
+    </div>
 
     <div class="d-flex row justify-content-sm-around">
         @foreach ($posts as $post)
@@ -80,7 +74,7 @@
                 </div>
                 {{-- </div> --}}
                 <div class="card-footer">
-                    {{ $post->updated_at->isoFormat('LL') }} - {{$post->user->userName }}
+                    {{ $post->updated_at->isoFormat('LL') }} - {{ $post->user->userName }}
                     {{-- - <a href="{{ route('blog.post.show', $post->slug) }}"><button type="button" class="btn btn-outline-dark">Article complet</button></a> --}}
                 </div>
             </div>
