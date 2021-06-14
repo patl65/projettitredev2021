@@ -104,25 +104,27 @@
     <div class="container-fluid mt-2 bg-success">
         @auth {{-- quand on est connecté --}}
             @cannot('admin') {{-- quand on n'est pas administrateur --}}
-                Je suis connecté(e) en tant que <a href="{{ route('user.show', auth()->user()->id) }}">{{ auth()->user()->userName }}</a>
+                Je suis connecté(e) en tant que <a
+                    href="{{ route('user.show', auth()->user()->id) }}">{{ auth()->user()->userName }}</a>
                 <a class="btn btn-outline-info btn-sm m-1" href="{{ route('logout') }}">Se déconnecter</a>
             @endcannot
+            @can('admin') {{-- quand on est administrateur --}}
+                Je suis connecté(e) en tant que {{ auth()->user()->firstName }} {{ auth()->user()->lastName }}
+                <a class="btn btn-outline-info btn-sm m-1" href="{{ route('logout') }}">Se déconnecter</a>
+                - Je suis Admin <a class="btn btn-outline-info btn-sm m-1" href="{{ route('admin') }}">Console
+                    Administrateur</a>
+            @endcan
         @endauth
-        @can('admin') {{-- quand on est administrateur --}}
-            Je suis connecté(e) en tant que {{ auth()->user()->firstName }} {{ auth()->user()->lastName }}
-            <a class="btn btn-outline-info btn-sm m-1" href="{{ route('logout') }}">Se déconnecter</a>
-            - Je suis Admin <a class="btn btn-outline-info btn-sm m-1" href="{{ route('admin') }}">Console
-                Administrateur</a>
-        @endcan
     </div>
-    
+
     <main class="container-fluid">
         @yield('content')
     </main>
 
     <footer class="footer align-items-center text-center my-3 pt-3 text-light">
         {{-- <div class="h-100 align-items-center"> --}}
-        <p style="color:rgb(175, 23, 130)"><b><i>@PatriciaLayerle - Titre développeuse web et web mobile</i></b> - <a href="{{ route('mentionsLegales') }}">Mentions légales</a></p>
+        <p style="color:rgb(175, 23, 130)"><b><i>@PatriciaLayerle - Titre développeuse web et web mobile</i></b> - <a
+                href="{{ route('mentionsLegales') }}">Mentions légales</a></p>
         {{-- </div> --}}
     </footer>
 </body>
