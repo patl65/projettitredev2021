@@ -113,7 +113,6 @@
             <a class="btn btn-outline-info btn-sm m-1" href="{{ route('logout') }}">Se déconnecter</a>
             - Je suis Admin <a class="btn btn-outline-info btn-sm m-1" href="{{ route('admin') }}">Console
                 Administrateur</a>
-
         @endcan
     </div>
     
