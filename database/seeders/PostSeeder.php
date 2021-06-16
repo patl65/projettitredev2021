@@ -17,5 +17,5 @@ class PostSeeder extends Seeder
     {
         Post::factory(30)->hasVideos(3)->create();
     }
-//pour info : 1 poste a 1 cotégorie (géré dans model/post) et 0 ou n photos ou videos
-    }
+    //pour info : 1 poste a 1 cotégorie (géré dans model/post) et 0 ou n photos ou videos
+}
