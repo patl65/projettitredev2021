@@ -4,6 +4,11 @@
 
     <h1>Conseils de Pro & Actualités : {{ $category->name }}</h1>
 
+    <a href="{{ route('blog.experience.create') }}"><button type=" button"
+        class="btn btn-success text-info btn-experience me-2 mb-2"><img src={{ asset('/images/layout/parler.png') }}
+            alt="" width="10%" height="auto"><b> Partagez ici votre
+            expérience Latu</b></button></a>
+
     @include('inc.buttonsPost')
 @include('inc.search')
 
