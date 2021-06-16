@@ -19,7 +19,6 @@ class Post extends Model
         'title', 'slug', 'content', 'category_id', 'user_id', 'published', 'refused'
     ];
 
-
     //pour clé étrangère de Category dans Post : 1 post a 1 seule catégorie
     public function category(): BelongsTo
     {

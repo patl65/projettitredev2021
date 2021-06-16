@@ -11,12 +11,9 @@ class VideoYoutube extends Model
 {
     use HasFactory;
 
-
-
     protected $fillable = [
         'link'
     ];
-
 
     public function posts(): BelongsToMany
     {
