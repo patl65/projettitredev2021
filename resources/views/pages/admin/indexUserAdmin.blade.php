@@ -3,7 +3,6 @@
 
     @include('inc.flash')
 
-
     <a href="{{ route('admin.user.create') }}"><button class="mb-2">Créer un utilisateur</button></a>
 
     <table class="table mt-2">
@@ -32,6 +31,5 @@
             @endforeach
         </tbody>
     </table>
-
 
 @endsection
