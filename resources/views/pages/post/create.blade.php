@@ -5,9 +5,7 @@
         <h3>Créer un article :</h3>
         <a href="{{ route('post.index') }}"><button class="ms-2">Annuler</button></a>
     </div>
-
     <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
-        {{-- enctype pour les fichiers photos --}}
         @csrf
         <div>
             <label for="category" class="col-form-label">Catégorie</label>
@@ -24,16 +22,6 @@
                 <span style="color:red">{{ $message }}</span>
             @enderror
         </div>
-                {{-- <div class="form-group mt-2">
-            <label for="content">Texte</label>
-                <p class="lead emoji-picker-container">
-                    <textarea type="textbox" rows="10" data-emoji-input="unicode"  class="form-control textarea-control" id="content"  name="content"
-                        data-emojiable="true">{{ old('content') }}</textarea>
-                </p>
-                @error('content')
-                <span style="color:red">{{ $message }}</span>
-            @enderror
-        </div> --}}
         <div class="form-group mt-2">
             <label for="content">Texte</label>
             <p class="">
@@ -47,7 +35,7 @@
         <div class="form-group  mt-2">
             <label for="video">Vidéos Youtube : lien,lien,lien (mettre une "," entre 2 liens)</label>
             <input type="text" class="form-control" id="video" name="video" value="{{ old('video') }}">
-            @error('title')
+            @error('video')
                 <span style="color:red">{{ $message }}</span>
             @enderror
         </div>
@@ -69,9 +57,5 @@
         <div>
             <button type="submit" class="ms-2 mt-3">Enregistrer</button>
         </div>
-
     </form>
-
-
-
 @endsection
