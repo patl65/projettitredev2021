@@ -101,6 +101,8 @@ h1 {
 
 .img-metier {
     max-height: 170px !important;
+    /* width: auto; 
+    height: auto; */
 }
 
 /* conseils de pro et actualités */

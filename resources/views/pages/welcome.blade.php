@@ -8,11 +8,11 @@
         <div class="card my-3 card-shadow" style="width: 26rem;">
             <div class="card-body">
                 <h5 class="card-title">La peinture</h5>
-                <div class="d-flex justify-content-center">
-                    <img src={{ asset('/images/homePage/latu-peinture.jpg') }} class="img-fluid mx-2 img-metier"
-                        alt="Latu peinture" width="auto" height="auto">
-                    <img src={{ asset('/images/homePage/latu-peinture2.jpg') }} class="img-fluid mx-2 img-metier"
-                        alt="Latu peinture" width="auto" height="auto">
+                <div class="d-flex flex-column flex-lg-row justify-content-center">
+                    <img src={{ asset('/images/homePage/latu-peinture.jpg') }} class="img-fluid m-2 img-metier"
+                        alt="Latu peinture">
+                    <img src={{ asset('/images/homePage/latu-peinture2.jpg') }} class="img-fluid m-2 img-metier"
+                        alt="Latu peintures">
                 </div>
                 <p class="card-text mt-2" align="justify">
                     Nous intervenons dans les bâtiments industriels, les logements collectifs ainsi que les particuliers.
@@ -31,11 +31,11 @@
         <div class="card my-3 card-shadow" style="width: 26rem;">
             <div class="card-body">
                 <h5 class="card-title">Les sols</h5>
-                <div class="d-flex justify-content-center">
-                    <img src={{ asset('/images/homePage/latu-sol.jpg') }} class="img-fluid mx-2 img-metier" alt="Latu sol"
-                        width="auto" height="auto">
-                    <img src={{ asset('/images/homePage/latu-sol2.jpg') }} class="img-fluid mx-2 img-metier"
-                        alt="Latu sol" width="auto" height="auto">
+                <div class="d-flex flex-column flex-lg-row justify-content-center">
+                    <img src={{ asset('/images/homePage/latu-sol.jpg') }} class="img-fluid m-2 img-metier"
+                        alt="Latu sol">
+                    <img src={{ asset('/images/homePage/latu-sol2.jpg') }} class="img-fluid m-2 img-metier"
+                        alt="Latu sol">
                 </div>
                 <p class="card-text mt-2" align="justify">
                     Nous faisons les ragréages et la pose de pvc, lino, moquette et parquet.
@@ -48,11 +48,11 @@
         <div class="card my-3 card-shadow" style="width: 26rem;">
             <div class="card-body">
                 <h5 class="card-title">L'isolation thermique par l'extérieur</h5>
-                <div class="d-flex justify-content-center">
-                    <img src={{ asset('/images/homePage/latu-ite.jpg') }} class="img-fluid mx-2 img-metier"
-                        alt="Latu isolation ITE" width="auto" height="auto">
-                    <img src={{ asset('/images/homePage/latu-ite2.jpg') }} class="img-fluid mx-2 img-metier"
-                        alt="Latu isolation ITE" width="auto" height="auto">
+                <div class="d-flex flex-column flex-lg-row justify-content-center">
+                    <img src={{ asset('/images/homePage/latu-ite.jpg') }} class="img-fluid m-2 img-metier"
+                        alt="Latu isolation ITE">
+                    <img src={{ asset('/images/homePage/latu-ite2.jpg') }} class="img-fluid m-2 img-metier"
+                        alt="Latu isolation ITE">
                 </div>
                 <p class="card-text mt-2" align="justify">
                     Nous réalisons une isolation qui consiste à entourer, par l’extérieur, votre maison d’une couverture de
