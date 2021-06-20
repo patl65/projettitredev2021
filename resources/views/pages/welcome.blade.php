@@ -1,10 +1,7 @@
 @extends('layout.layout')
 @section('content')
-
     <h1>Nos métiers</h1>
-
     <div class="row d-flex justify-content-sm-between mx-5 mb-5">
-
         <div class="card my-3 card-shadow" style="width: 26rem;">
             <div class="card-body">
                 <h5 class="card-title">La peinture</h5>
@@ -27,13 +24,11 @@
                 </p>
             </div>
         </div>
-
         <div class="card my-3 card-shadow" style="width: 26rem;">
             <div class="card-body">
                 <h5 class="card-title">Les sols</h5>
                 <div class="d-flex flex-column flex-lg-row justify-content-center">
-                    <img src={{ asset('/images/homePage/latu-sol.jpg') }} class="img-fluid m-2 img-metier"
-                        alt="Latu sol">
+                    <img src={{ asset('/images/homePage/latu-sol.jpg') }} class="img-fluid m-2 img-metier" alt="Latu sol">
                     <img src={{ asset('/images/homePage/latu-sol2.jpg') }} class="img-fluid m-2 img-metier"
                         alt="Latu sol">
                 </div>
@@ -44,7 +39,6 @@
                 </p>
             </div>
         </div>
-
         <div class="card my-3 card-shadow" style="width: 26rem;">
             <div class="card-body">
                 <h5 class="card-title">L'isolation thermique par l'extérieur</h5>
@@ -61,14 +55,10 @@
                     Cette opération élimine les ponts thermiques et vous permet de réduire vos coût de chauffage.
                 </p>
             </div>
-
         </div>
-
         <div class="container card card-entreprise mt-5 card-shadow">
             <p class="card-text m-2" align="justify">L'entreprise Latu fondée en 1928 est présente en Bigorre sur la côte
                 Basque et sur Bordeaux.</p>
         </div>
-
     </div>
-
 @endsection
